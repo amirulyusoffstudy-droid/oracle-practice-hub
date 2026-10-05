@@ -1,0 +1,20 @@
+{
+  "name": "Oracle Practice Hub",
+  "short_name": "Oracle Hub",
+  "description": "Offline Oracle Database Administration I practice exams",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icons/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

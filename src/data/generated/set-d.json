@@ -1,0 +1,2176 @@
+[
+  {
+    "id": "D-01",
+    "set": "D",
+    "number": 1,
+    "topic": "SQL joins",
+    "type": "multiple",
+    "stem": "Which three statements are true about the Oracle join and ANSI join syntax? (Choose three.)",
+    "options": {
+      "A": "The Oracle join syntax supports creation of a Cartesian product of two tables",
+      "B": "The Oracle join syntax performs better than the SQL:1999 compliant ANSI join syntax",
+      "C": "The SQL:1999 compliant ANSI join syntax supports natural joins",
+      "D": "The SQL:1999 compliant ANSI join syntax supports creation of a Cartesian product of two tables",
+      "E": "The Oracle join syntax only supports right outer joins",
+      "F": "The Oracle join syntax supports natural joins",
+      "G": "The Oracle join syntax performs less well than the SQL:1999 compliant ANSI join syntax"
+    },
+    "answers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "A, C, and D are correct. Oracle's traditional comma-separated FROM syntax can intentionally omit a join predicate and produce a Cartesian product. ANSI SQL supports NATURAL JOIN and CROSS JOIN, the latter being an explicit Cartesian product. Neither syntax has an inherent performance advantage, and the Oracle syntax is not limited to right outer joins.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Joins",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-02",
+    "set": "D",
+    "number": 2,
+    "topic": "Tablespace space management",
+    "type": "multiple",
+    "stem": "Which three Oracle database space management features will work with both Dictionary and Locally managed tablespaces? (Choose three.)",
+    "options": {
+      "A": "Oracle Managed Files (OMF)",
+      "B": "Online table segment shrink",
+      "C": "Online index segment shrink",
+      "D": "Automatic data file extension (AUTOEXTEND)",
+      "E": "Capacity planning growth reports based on historical data in the Automatic Workload Repository (AWR)"
+    },
+    "answers": [
+      "A",
+      "D",
+      "E"
+    ],
+    "explanation": "A, D, and E are independent of extent-management style. Oracle Managed Files controls file naming and placement, AUTOEXTEND is a datafile property, and historical capacity analysis can use AWR data. Online segment shrink depends on locally managed tablespaces with ASSM, so the two shrink choices do not work with dictionary-managed tablespaces.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Tablespaces",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tablespaces.html"
+      },
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Space for Schema Objects",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-space-for-schema-objects.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-03",
+    "set": "D",
+    "number": 3,
+    "topic": "Compound queries and ordering",
+    "type": "multiple",
+    "stem": "Examine this SQL statement: SELECT cust_id, cust_last_name \"Last Name\" FROM customers WHERE country_id = 10 UNION SELECT cust_id CUST_NO, cust_last_name FROM customers WHERE country_id = 30 Identify three ORDER BY clauses, any one of which can complete the query successfully? (Choose three.)",
+    "options": {
+      "A": "ORDER BY \"Last Name\"",
+      "B": "ORDER BY 2, 1",
+      "C": "ORDER BY 2, cust_id",
+      "D": "ORDER BY CUST_NO",
+      "E": "ORDER BY \"CUST_NO\""
+    },
+    "answers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "A, B, and C work. An ORDER BY on a compound query may use output-column positions, the quoted alias \"Last Name\", or the first SELECT's output name CUST_ID. The alias CUST_NO appears only in the second SELECT and does not become the compound result's column name; quoted \"CUST_NO\" is therefore invalid as well.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Set Operators",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/The-UNION-ALL-INTERSECT-MINUS-Operators.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-04",
+    "set": "D",
+    "number": 4,
+    "topic": "Primary and foreign key constraints",
+    "type": "multiple",
+    "stem": "Which four statements are true regarding primary and foreign key constraints and the effect they can have on table data? (Choose four.)",
+    "options": {
+      "A": "A table can have only one primary key but multiple foreign keys",
+      "B": "A table can have only one primary key and one foreign key",
+      "C": "The foreign key columns and parent table primary key columns must have the same names",
+      "D": "It is possible for child rows that have a foreign key to remain in the child table at the time the parent row is deleted",
+      "E": "It is possible for child rows that have a foreign key to be deleted automatically from the child table at the time the parent row is deleted",
+      "F": "Only the primary key can be defined at the column and table level",
+      "G": "Primary key and foreign key constraints can be defined at both the column and table level"
+    },
+    "answers": [
+      "A",
+      "D",
+      "E",
+      "G"
+    ],
+    "explanation": "A, D, E, and G are correct. A table has at most one primary key but may have many foreign keys, and both constraint types can be declared at column or table level. A parent delete may be blocked or may leave child rows when the foreign key is disabled or null; with ON DELETE CASCADE, child rows are removed automatically. Referenced and referencing column names need not match.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Constraints",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-05",
+    "set": "D",
+    "number": 5,
+    "topic": "Aggregate functions",
+    "type": "single",
+    "stem": "Which statement is true about aggregate functions?",
+    "options": {
+      "A": "Aggregate functions can be nested to any number of levels",
+      "B": "The AVG function implicitly converts NULLS to zero",
+      "C": "Aggregate functions can be used in any clause of a SELECT statement",
+      "D": "The MAX and MIN functions can be used on columns with character data types"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "D is correct because MIN and MAX can compare character values as well as numbers and dates. Aggregate functions normally ignore nulls rather than converting them to zero, cannot appear in every SELECT clause, and nesting is constrained by query levels rather than being unlimited.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Single-Row Functions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Single-Row-Functions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-06",
+    "set": "D",
+    "number": 6,
+    "topic": "Set operators",
+    "type": "single",
+    "stem": "Which statement is true about the INTERSECT operator used in compound queries?",
+    "options": {
+      "A": "Multiple INTERSECT operators are not possible in the same SQL statement",
+      "B": "It processes NULLs in the selected columns",
+      "C": "INTERSECT is of lower precedence than UNION or UNION ALL",
+      "D": "It ignores NULLs"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "B is correct. INTERSECT compares complete selected rows, including null positions for duplicate/set comparison, and returns distinct rows common to both component queries. Multiple INTERSECT operators are allowed; in Oracle 19c all set operators have equal precedence and are evaluated left to right unless parentheses change the order.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Set Operators",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/The-UNION-ALL-INTERSECT-MINUS-Operators.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-07",
+    "set": "D",
+    "number": 7,
+    "topic": "Temporary undo",
+    "type": "single",
+    "stem": "A database is configured to use automatic undo management with temporary undo enabled. An UPDATE is executed on a temporary table. Where is the UNDO stored?",
+    "options": {
+      "A": "in the undo tablespace",
+      "B": "in the SYSAUX tablespace",
+      "C": "in the SGA",
+      "D": "in the PGA",
+      "E": "in the temporary tablespace"
+    },
+    "answers": [
+      "E"
+    ],
+    "explanation": "E is correct. With TEMP_UNDO_ENABLED set to TRUE, undo generated for temporary-table changes is stored in temporary undo segments in the temporary tablespace and is not logged like permanent-object undo. It is not stored in the permanent undo tablespace, SGA, PGA, or SYSAUX.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Undo",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-undo.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-08",
+    "set": "D",
+    "number": 8,
+    "topic": "Initialization parameters",
+    "type": "single",
+    "stem": "Your database instance is started with a PFILE. Examine these parameters: You want to increase the size of the buffer cache. Free memory is available to increase the size of the buffer cache. You execute the command: SQL> ALTER SYSTEM SET DB_CACHE_SIZE=1024M; What is the outcome?",
+    "options": {
+      "A": "The value is changed only in the PFILE and takes effect at the next instance startup",
+      "B": "The value is changed for the current instance and in the PFILE",
+      "C": "It fails because the SCOPE clause is missing",
+      "D": "Change is applied to the current instance, but does not persist after instance restart"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "D is correct. When an instance was started with a text PFILE, ALTER SYSTEM without a SCOPE clause changes a dynamic parameter in memory for the current instance. Oracle cannot update a PFILE automatically, so the setting disappears after restart unless the PFILE is edited or an SPFILE is created and updated.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Introduction to Oracle Database",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/introduction-to-oracle-database.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-09",
+    "set": "D",
+    "number": 9,
+    "topic": "Indexes",
+    "type": "multiple",
+    "stem": "Which three statements are true regarding indexes? (Choose three.)",
+    "options": {
+      "A": "A UNIQUE index can be altered to be non-unique",
+      "B": "A SELECT statement can access one or more indexes without accessing any tables",
+      "C": "A table belonging to one user can have an index that belongs to a different user",
+      "D": "An update to a table can result in updates to any or all of the table's indexes",
+      "E": "When a table is dropped and is moved to the RECYCLE BIN, all indexes built on that table are permanently dropped",
+      "F": "An update to a table can result in no updates to any of the table's indexes"
+    },
+    "answers": [
+      "B",
+      "D",
+      "F"
+    ],
+    "explanation": "B, D, and F are correct. An index-only access path can satisfy a query without visiting the table. Updating an indexed column can update one or more indexes, whereas changing only non-indexed columns may update none. An index belongs to the same schema as its table, a unique index cannot simply be altered to nonunique, and recycle-bin indexes are not permanently discarded immediately.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Indexes",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-indexes.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-10",
+    "set": "D",
+    "number": 10,
+    "topic": "Tablespaces",
+    "type": "multiple",
+    "stem": "You execute: CREATE SMALLFILE TABLESPACE sales DATAFILE '/u01/app/oracle/sales01.dbf' SIZE 5G SEGMENT SPACE MANAGEMENT AUTO. Which two statements are true about the SALES tablespace? (Choose two.)",
+    "options": {
+      "A": "It must be smaller than the smallest BIGFILE tablespace",
+      "B": "Free space is managed using freelists",
+      "C": "Any data files added to the tablespace must have a size of 5 gigabytes",
+      "D": "It uses the database default blocksize",
+      "E": "It is a locally managed tablespace"
+    },
+    "answers": [
+      "D",
+      "E"
+    ],
+    "explanation": "D and E are correct. Because no BLOCKSIZE is specified, the tablespace uses the database standard block size. Modern permanent tablespaces are locally managed by default, and ASSM is explicitly requested. SMALLFILE does not impose a relative size comparison with every BIGFILE tablespace, and later datafiles need not match the first file's size.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Tablespaces",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tablespaces.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-11",
+    "set": "D",
+    "number": 11,
+    "topic": "Enterprise Manager Database Express",
+    "type": "multiple",
+    "stem": "Which two statements are true about Enterprise Manager Database Express? (Choose two.)",
+    "options": {
+      "A": "It is available only when the database is open",
+      "B": "It can be used to perform database recovery",
+      "C": "The same port number can be used for Database Express configurations for databases on different hosts",
+      "D": "It can be used to switch a database into ARCHIVELOGMODE",
+      "E": "The same port number can be used for multiple Database Express configurations for multiple databases on the same host"
+    },
+    "answers": [
+      "A",
+      "C"
+    ],
+    "explanation": "A and C match the intended Database Express behavior: EM Express connects to a running, open database, and port numbers only need to be unique on a given host, so separate hosts may reuse the same port. Recovery and changing ARCHIVELOG mode require other administrative tooling. This item uses legacy EM wording and should be treated cautiously for modern 19c deployments.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Introduction to Oracle Database",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/introduction-to-oracle-database.html"
+      }
+    ],
+    "confidence": "medium",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-12",
+    "set": "D",
+    "number": 12,
+    "topic": "Undo and redo",
+    "type": "multiple",
+    "stem": "Which two statements are true about UNDO and REDO? (Choose two.)",
+    "options": {
+      "A": "The generation of UNDO generates REDO",
+      "B": "DML modifies Oracle database objects and only generates UNDO",
+      "C": "The generation of REDO generates UNDO",
+      "D": "DML modifies Oracle database objects and only generates REDO",
+      "E": "DML modifies Oracle database objects and generates UNDO and REDO"
+    },
+    "answers": [
+      "A",
+      "E"
+    ],
+    "explanation": "A and E are correct. DML changes data blocks and creates undo records so that the transaction can be rolled back and readers can obtain consistent data. Changes to permanent undo blocks themselves generate redo, so a normal DML operation produces both undo and redo rather than only one of them.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Logical Storage Structures",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/logical-storage-structures.html"
+      },
+      {
+        "title": "Oracle Database 19c Concepts — Physical Storage Structures",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/physical-storage-structures.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-13",
+    "set": "D",
+    "number": 13,
+    "topic": "Datetime functions",
+    "type": "multiple",
+    "stem": "Which two statements are true about date/time functions in a session where NLS_DATE_FORMAT is set to DD-MON-YYYY HH24:MI:SS? (Choose two.)",
+    "options": {
+      "A": "CURRENT_TIMESTAMP returns the same date and time as SYSDATE with additional details of fractional seconds",
+      "B": "SYSDATE can be queried only from the DUAL table",
+      "C": "CURRENT_DATE returns the current date and time as per the session time zone",
+      "D": "SYSDATE can be used in expressions only if the default date format is DD-MON-RR",
+      "E": "SYSDATE and CURRENT_DATE return the current date and time set for the operating system of the database server",
+      "F": "CURRENT_TIMESTAMP returns the same date as CURRENT_DATE"
+    },
+    "answers": [
+      "C",
+      "F"
+    ],
+    "explanation": "C and F are correct. CURRENT_DATE returns a DATE in the session time zone, while CURRENT_TIMESTAMP represents the same current session-local date and time with fractional seconds and time-zone information. SYSDATE follows the database server clock, is not limited to DUAL, and does not require a particular NLS_DATE_FORMAT to be used in expressions.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — CURRENT_DATE",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CURRENT_DATE.html"
+      },
+      {
+        "title": "Oracle Database 19c SQL Language Reference — CURRENT_TIMESTAMP",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CURRENT_TIMESTAMP.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-14",
+    "set": "D",
+    "number": 14,
+    "topic": "Oracle Net naming",
+    "type": "single",
+    "stem": "In one of your databases, the user HR has the password HRMGR. You want to connect to a database instance whose listener listens on port 1531 by using this statement: CONNECT HR/HRMGR@orcl No name server is used. Which statement is true about ORCL?",
+    "options": {
+      "A": "It must be the value of the SERVICE_NAMES parameter on the client side",
+      "B": "It must resolve to a valid connect descriptor in the server's tnsnames.ora file",
+      "C": "It must resolve to a valid connect descriptor in the client's tnsnames.ora file",
+      "D": "It must be the name of the database to whose instance HR wishes to connect",
+      "E": "It must be the name of the server running the database to whose instance HR wishes to connect"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "C is correct. In HR/HRMGR@orcl, ORCL is a client-side connect identifier. With local naming and no name server, the client resolves it to a connect descriptor in the client's tnsnames.ora, which can contain the host, port 1531, and service information. It need not equal the database or server name.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Net Services Administrator's Guide",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/netag/index.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-15",
+    "set": "D",
+    "number": 15,
+    "topic": "Diagnostic trace files",
+    "type": "multiple",
+    "stem": "Which two statements are true about trace files produced by the Oracle Database server? (Choose two.)",
+    "options": {
+      "A": "They can be written by server processes",
+      "B": "Trace files are written to the Fast Recovery Area (FRA)",
+      "C": "They can be written by background processes",
+      "D": "All trace files contain error information that require contacting Oracle Support",
+      "E": "Trace file names are based on the database name concatenated with a sequential number"
+    },
+    "answers": [
+      "A",
+      "C"
+    ],
+    "explanation": "A and C are correct. Both server processes and background processes can write process-specific trace files in the ADR. Trace files are not stored in the Fast Recovery Area, do not all imply an Oracle Support case, and their platform-dependent names typically include the SID, process name or 'ora', and OS process identifier rather than a simple sequence.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Diagnosing and Resolving Problems",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/diagnosing-and-resolving-problems.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-16",
+    "set": "D",
+    "number": 16,
+    "topic": "System privileges",
+    "type": "multiple",
+    "stem": "In one of your databases, you create a user, HR, and then execute this command: GRANT CREATE SESSION TO hr WITH ADMIN OPTION; Which three actions can HR perform? (Choose three.)",
+    "options": {
+      "A": "Revoke the CREATE SESSION privilege from other users",
+      "B": "Revoke the CREATE SESSION privilege from user HR",
+      "C": "Log in to the database instance",
+      "D": "Grant the CREATE SESSION privilege with ADMIN OPTION to other users",
+      "E": "Execute DDL statements in the HR schema",
+      "F": "Execute DML statements in the HR schema"
+    },
+    "answers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "A, C, and D are correct. CREATE SESSION lets HR connect. WITH ADMIN OPTION lets HR grant that system privilege, including its admin option, to other users and revoke grants HR made. It does not let HR revoke the privilege from itself, and CREATE SESSION alone grants no general DDL or DML rights in the HR schema.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Security Guide — Managing Database Users",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/managing-security-for-oracle-database-users.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-17",
+    "set": "D",
+    "number": 17,
+    "topic": "SQL*Loader",
+    "type": "multiple",
+    "stem": "Which three files are used by conventional path SQL*Loader when the TABLE option is not specified? (Choose three.)",
+    "options": {
+      "A": "dump files",
+      "B": "control files",
+      "C": "password files",
+      "D": "bad files",
+      "E": "input files"
+    },
+    "answers": [
+      "B",
+      "D",
+      "E"
+    ],
+    "explanation": "B, D, and E are the relevant files. A conventional SQL*Loader operation reads the control file and input data file; rejected records can be written to a bad file. Dump files belong to Data Pump or external-table workflows, and password files are database authentication infrastructure rather than SQL*Loader input.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Utilities — Understanding SQL*Loader",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sutil/oracle-sql-loader-concepts.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-18",
+    "set": "D",
+    "number": 18,
+    "topic": "Automatic undo management",
+    "type": "multiple",
+    "stem": "Examine this command: CREATE UNDO TABLESPACE undotbs01 DATAFILE 'undotbs_01.dbf' SIZE 100M AUTOEXTEND ON; Which two actions must you take to ensure UNDOTBS01 is used as the default UNDO tablespace? (Choose two.)",
+    "options": {
+      "A": "Add the SEGMENT SPACE MANAGEMENT AUTO clause",
+      "B": "Set UNDO_TABLESPACE to UNDOTBS01",
+      "C": "Add the NOLOGGING clause",
+      "D": "Make certain that the database operates in automatic undo management mode",
+      "E": "Add the ONLINE clause"
+    },
+    "answers": [
+      "B",
+      "D"
+    ],
+    "explanation": "B and D are required. The database must operate in automatic undo management mode, and UNDO_TABLESPACE must identify UNDOTBS01 for the instance to use it as the current default undo tablespace. Undo tablespaces are locally managed with system-managed segment space; NOLOGGING and ONLINE do not select the active undo tablespace.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Undo",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-undo.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-19",
+    "set": "D",
+    "number": 19,
+    "topic": "Row and block storage",
+    "type": "multiple",
+    "stem": "Which three statements are true about table data storage in an Oracle Database? (Choose three.)",
+    "options": {
+      "A": "Data block headers contain their own Data Block Address (DBA)",
+      "B": "A table row piece can be chained across several database blocks",
+      "C": "Multiple row pieces from the same row may be stored in different database blocks",
+      "D": "Multiple row pieces from the same row may be stored in the same block",
+      "E": "Data block free space is always contiguous in the middle of the block",
+      "F": "Index block free space is always contiguous in the middle of the block"
+    },
+    "answers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "A, B, and C are correct. A data block header identifies and manages the block, including its address-related metadata. A row too large for one block can be split into row pieces chained across multiple blocks, so pieces of one row can reside in different blocks. Free space is not guaranteed to remain contiguous in the middle of table or index blocks.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Logical Storage Structures",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/logical-storage-structures.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-20",
+    "set": "D",
+    "number": 20,
+    "topic": "NULL predicates and aliases",
+    "type": "single",
+    "stem": "The CUSTOMERS table includes CUST_FIRST_NAME, CUST_CREDIT_LIMIT, and CUST_INCOME_LEVEL. You want to display customers whose income level and credit limit are not null, together with a due amount equal to 5% of the credit limit. Which query should be used?",
+    "options": {
+      "A": "SELECT cust_first_name, cust_credit_limit * .05 AS due_amount FROM customers WHERE cust_income_level IS NOT NULL AND due_amount IS NOT NULL",
+      "B": "SELECT cust_first_name, cust_credit_limit * .05 AS due_amount FROM customers WHERE cust_income_level != NULL AND cust_credit_limit != NULL",
+      "C": "SELECT cust_first_name, cust_credit_limit * .05 AS due_amount FROM customers WHERE cust_income_level <> NULL AND cust_credit_limit <> NULL",
+      "D": "SELECT cust_first_name, cust_credit_limit * .05 AS due_amount FROM customers WHERE cust_income_level != NULL AND due_amount != NULL",
+      "E": "SELECT cust_first_name, cust_credit_limit * .05 AS due_amount FROM customers WHERE cust_income_level IS NOT NULL AND cust_credit_limit IS NOT NULL"
+    },
+    "answers": [
+      "E"
+    ],
+    "explanation": "E is correct. SQL tests nullness with IS NULL or IS NOT NULL, not equality or inequality operators. The WHERE clause also cannot normally reference a select-list alias from the same query block, so it must test CUST_CREDIT_LIMIT directly; multiplying the non-null credit limit by .05 then produces the due amount.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Conditions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Conditions.html"
+      },
+      {
+        "title": "Oracle Database 19c SQL Language Reference — SELECT",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-21",
+    "set": "D",
+    "number": 21,
+    "topic": "Database Configuration Assistant",
+    "type": "multiple",
+    "stem": "Which two tasks can you perform using DBCA for databases? (Choose two.)",
+    "options": {
+      "A": "Configure a nonstandard block size for a new database",
+      "B": "Register a new database with an available Enterprise Manager Management server",
+      "C": "Change the standard block size of an existing database",
+      "D": "Configure incremental backups for a new database",
+      "E": "Enable flashback database for an existing database"
+    },
+    "answers": [
+      "A",
+      "B"
+    ],
+    "explanation": "A and B are the intended answers for the source's DBCA generation: DBCA can set the database's standard block size during creation and can register a database with an available Enterprise Manager management service. The standard block size cannot be changed after creation. The Enterprise Manager registration wording reflects older tooling, so verify it against the exact DBCA build used in a lab.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Introduction to Oracle Database",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/introduction-to-oracle-database.html"
+      }
+    ],
+    "confidence": "needs-review",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-22",
+    "set": "D",
+    "number": 22,
+    "topic": "Privilege analysis",
+    "type": "multiple",
+    "stem": "You want to apply the principle of Least Privilege in all your live databases. One of your requirements is to revoke unnecessary privileges from all users who have them using Privilege Analysis. Which three types of analyses can be done using the DBMS_PRIVILEGE_CAPTURE package? (Choose three.)",
+    "options": {
+      "A": "analysis of all privileges used by all users including administrative users in the database",
+      "B": "analysis of all privileges used by all users but excluding administrative users in the database",
+      "C": "analysis of privileges that a user has on their own schema objects that they did not use",
+      "D": "analysis of privileges that a user has on their own schema objects that they did use",
+      "E": "analysis of privileges granted directly to a role that are then used by a user who has been granted that role",
+      "F": "analysis of privileges granted indirectly to a role that are then used by a user who has been granted that role"
+    },
+    "answers": [
+      "B",
+      "E",
+      "F"
+    ],
+    "explanation": "B, E, and F are correct under the documented capture modes. G_DATABASE captures database-wide privilege use except privileges used by SYS. G_ROLE captures privileges used through specified roles, including privileges inherited through nested roles, so direct and indirect role grants can be analyzed. Object-owner rights on the owner's own objects are not privilege grants to capture in the way C and D describe.",
+    "references": [
+      {
+        "title": "Oracle Database 19c PL/SQL Packages Reference — DBMS_PRIVILEGE_CAPTURE",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_PRIVILEGE_CAPTURE.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-23",
+    "set": "D",
+    "number": 23,
+    "topic": "Column aliases",
+    "type": "multiple",
+    "stem": "Examine this description of the TRANSACTIONS table: Which two SQL statements execute successfully? (Choose two.)",
+    "options": {
+      "A": "SELECT customer_id AS \"CUSTOMER-ID\", transaction_date AS DATE, amount + 100 \"DUES\" FROM transactions",
+      "B": "SELECT customer_id AS \"CUSTOMER-ID\", transaction_date AS \"DATE\", amount + 100 DUES FROM transactions",
+      "C": "SELECT customer_id AS CUSTOMER-ID, transaction_date AS TRANS_DATE, amount + 100 \"DUES AMOUNT\" FROM transactions",
+      "D": "SELECT customer_id CUSTID, transaction_date TRANS_DATE, amount + 100 DUES FROM transactions",
+      "E": "SELECT customer_id AS 'CUSTOMER-ID', transaction_date AS DATE, amount + 100 'DUES AMOUNT' FROM transactions"
+    },
+    "answers": [
+      "B",
+      "D"
+    ],
+    "explanation": "B and D execute successfully. Double quotation marks permit otherwise problematic alias text such as CUSTOMER-ID and DATE; ordinary aliases such as CUSTID, TRANS_DATE, and DUES need no AS keyword. CUSTOMER-ID without quotes is parsed as subtraction, and single quotes denote string literals rather than identifiers in a select-list alias declaration.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — SELECT",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-24",
+    "set": "D",
+    "number": 24,
+    "topic": "Database instances",
+    "type": "multiple",
+    "stem": "Which three instance situations are possible with the Oracle Database server without multi-tenant? (Choose three.)",
+    "options": {
+      "A": "two or more instances on separate servers all associated with one database",
+      "B": "one instance on one server associated with one database",
+      "C": "one instance on one server associated with two or more databases on the same server",
+      "D": "one instance on one server not associated with any database",
+      "E": "one instance on one server associated with two or more databases on separate servers"
+    },
+    "answers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "A, B, and D are possible. Oracle RAC permits multiple instances on separate servers to open one database; the common single-instance case maps one instance to one database; and an instance started NOMOUNT exists before it is associated with an opened or mounted database. One instance cannot simultaneously manage multiple separate databases.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Introduction to Oracle Database",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/introduction-to-oracle-database.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-25",
+    "set": "D",
+    "number": 25,
+    "topic": "Dynamic service registration",
+    "type": "single",
+    "stem": "In the SPFILE of a single-instance database, LOCAL_LISTENER is set to LISTENER_1. LISTENER_1 resolves through TNSNAMES.ORA to a valid listener address. Which statement is true?",
+    "options": {
+      "A": "Dynamic service registration cannot be used for this database instance",
+      "B": "The LREG process registers services dynamically with the LISTENER_1 listener",
+      "C": "LISTENER_1 must also be defined in the LISTENER.ORA file to enable dynamic service registration",
+      "D": "There are two listeners named LISTENER and LISTENER_1 running simultaneously using port 1521 on the same host as the database instances",
+      "E": "The definition for LISTENER_1 requires a CONNECT_DATA section to enable dynamic service registration"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "B is correct. LOCAL_LISTENER supplies an address or naming alias that LREG resolves and uses to register instance and dispatcher services dynamically. Dynamic registration does not require a static SID entry or CONNECT_DATA in listener.ora, and the alias does not imply that two listeners share the same host and port.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Net Services Administrator's Guide — Configuring the Listener",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/netag/configuring-and-administering-oracle-net-listener.html"
+      },
+      {
+        "title": "Oracle Database 19c Concepts — Process Architecture",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/process-architecture.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-26",
+    "set": "D",
+    "number": 26,
+    "topic": "Interval data types",
+    "type": "single",
+    "stem": "You have been tasked to create a table for a banking application. One of the columns must meet three requirements: Be stored in a format supporting date arithmetic without using conversion functions Store a loan period of up to 10 years Be used for calculating interest for the number of days the loan remains unpaid Which data type should you use?",
+    "options": {
+      "A": "INTERVAL YEAR TO MONTH",
+      "B": "INTERVAL DAY TO SECOND",
+      "C": "TIMESTAMP WITH LOCAL TIMEZONE",
+      "D": "TIMESTAMP",
+      "E": "TIMESTAMP WITH TIMEZONE"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "B is the best fit. INTERVAL DAY TO SECOND represents a duration in days through fractional seconds and supports direct datetime arithmetic, so a sufficiently large leading-day precision can represent a loan period up to ten years and support day-based interest calculations. Timestamp types represent instants, while YEAR TO MONTH cannot express an exact number of days.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Datetime and Interval Data Types",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Data-Types.html"
+      }
+    ],
+    "confidence": "medium",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-27",
+    "set": "D",
+    "number": 27,
+    "topic": "Dropping and unused columns",
+    "type": "multiple",
+    "stem": "Which three statements are true about dropping and unused columns in an Oracle database? (Choose three.)",
+    "options": {
+      "A": "A primary key column referenced by another column as a foreign key can be dropped if using the CASCADE option.",
+      "B": "An UNUSED column's space is reclaimed automatically when the block containing that column is next queried.",
+      "C": "An UNUSED column's space is reclaimed automatically when the row containing that column is next queried.",
+      "D": "Partition key columns cannot be dropped.",
+      "E": "A DROP COLUMN command can be rolled back",
+      "F": "A column that is set to UNUSED still counts towards the limit of 1000 columns per table"
+    },
+    "answers": [
+      "A",
+      "D",
+      "F"
+    ],
+    "explanation": "A, D, and F are correct. A referenced key column can be dropped only with cascading constraint handling; a partitioning key cannot be dropped while it remains part of the partitioning definition; and SET UNUSED hides a column but its internal column slot still counts toward the table's column limit until the unused columns are physically dropped. DDL is implicitly committed, not rollbackable.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Tables",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tables.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-28",
+    "set": "D",
+    "number": 28,
+    "topic": "NULL-handling functions",
+    "type": "multiple",
+    "stem": "The CUSTOMERS table has a CUST_CREDIT_LIMIT column of data type NUMBER. Which two queries execute successfully? (Choose two.)",
+    "options": {
+      "A": "SELECT NVL(cust_credit_limit * .15, 'Not Available') FROM customers",
+      "B": "SELECT NVL2(cust_credit_limit * .15, 'Not Available') FROM customers",
+      "C": "SELECT NVL(TO_CHAR(cust_credit_limit * .15), 'Not Available') FROM customers",
+      "D": "SELECT TO_CHAR(NVL(cust_credit_limit * .15, 'Not Available')) FROM customers",
+      "E": "SELECT NVL2(cust_credit_limit, TO_CHAR(cust_credit_limit * .15), 'Not Available') FROM customers"
+    },
+    "answers": [
+      "C",
+      "E"
+    ],
+    "explanation": "C and E execute safely for all rows. C converts the numeric calculation to character before NVL chooses the character fallback. E uses NVL2 with two character return expressions. The other choices either use the wrong NVL2 arity or force Oracle to convert 'Not Available' to NUMBER, which fails when a null credit limit selects that value.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Single-Row Functions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Single-Row-Functions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-29",
+    "set": "D",
+    "number": 29,
+    "topic": "Resumable space allocation",
+    "type": "multiple",
+    "stem": "The ORCL database has RESUMABLE__TIMEOUT = 7200 and DEFERRED_SEGMENT_CREATION = FALSE User U1 has a 1 MB quota in tablespace DATA. U1 executes this command: SQL> CREATE TABLE t1 AS (SELECT object_name, sharing, created FROM dba_objects); U1 complains that the command is taking too long to execute. In the alert log, the database administrator (DBA) finds this: 2017-03-06T12:15:17.183438+05:30 statement in resumable session 'User U1(136), Session 1, Instance 1' was suspended due to ORA-01536: space quota exceeded for tablespace 'DATA' Which are three actions any one of which the DBA could take to resume the session? (Choose three.)",
+    "options": {
+      "A": "Add a data file to DATA",
+      "B": "Drop other U1 objects in DATA",
+      "C": "Increase U1's quota sufficiently in DATA",
+      "D": "Set DEFERRED_SEGMENT_CREATION to TRUE",
+      "E": "Grant UNLIMITED TABLESPACE to U1",
+      "F": "Set AUTOEXTEND ON for data files in DATA"
+    },
+    "answers": [
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "B, C, and E correct the quota error and allow the suspended statement to resume. Dropping U1 objects frees quota usage, increasing U1's quota raises the limit, and UNLIMITED TABLESPACE removes the quota restriction. Adding or extending physical storage does not fix ORA-01536 when the user's quota—not tablespace capacity—is the limiting condition.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Space for Schema Objects",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-space-for-schema-objects.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-30",
+    "set": "D",
+    "number": 30,
+    "topic": "Oracle Data Pump",
+    "type": "multiple",
+    "stem": "During a Data Pump export, you detach from the job and issue STOP_JOB=IMMEDIATE, then confirm the operation. Which two statements are true about the job? (Choose two.)",
+    "options": {
+      "A": "You can no longer monitor it",
+      "B": "You can reattach to it and monitor it",
+      "C": "It is paused and can be resumed",
+      "D": "It continues to run in the background",
+      "E": "It terminates"
+    },
+    "answers": [
+      "B",
+      "C"
+    ],
+    "explanation": "B and C are correct. STOP_JOB=IMMEDIATE stops the Data Pump job without completing it but preserves the job's master table and state. A client can later attach to the stopped job, inspect it, and issue START_JOB to resume. It does not continue running in the background and is not irreversibly terminated.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Utilities — Data Pump Export",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sutil/oracle-data-pump-export-utility.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-31",
+    "set": "D",
+    "number": 31,
+    "topic": "Transactions and savepoints",
+    "type": "multiple",
+    "stem": "Which two statements are true regarding a SAVEPOINT? (Choose two.)",
+    "options": {
+      "A": "Rolling back to a SAVEPOINT can undo a CREATE INDEX statement",
+      "B": "Rolling back to a SAVEPOINT can undo a TRUNCATE statement",
+      "C": "Only one SAVEPOINT may be issued in a transaction",
+      "D": "A SAVEPOINT does not issue a COMMIT",
+      "E": "Rolling back to a SAVEPOINT can undo a DELETE statement"
+    },
+    "answers": [
+      "D",
+      "E"
+    ],
+    "explanation": "D and E are correct. SAVEPOINT marks a position inside the current transaction and does not commit it. ROLLBACK TO that savepoint can undo later transactional DML such as DELETE while preserving earlier work. CREATE INDEX and TRUNCATE are DDL and implicitly commit, and a transaction may define multiple savepoints.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Transactions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/transactions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-32",
+    "set": "D",
+    "number": 32,
+    "topic": "Filtering and grouping",
+    "type": "multiple",
+    "stem": "Which two statements are true about the WHERE and HAVING clauses in a SELECT statement? (Choose two.)",
+    "options": {
+      "A": "Aggregating functions and columns used in HAVING clauses must be specified in the SELECT list of a query",
+      "B": "WHERE and HAVING clauses can be used in the same statement only if applied to different table columns",
+      "C": "The HAVING clause can be used with aggregating functions in subqueries",
+      "D": "The WHERE clause can be used to exclude rows before dividing them into groups",
+      "E": "The WHERE clause can be used to exclude rows after dividing them into groups"
+    },
+    "answers": [
+      "C",
+      "D"
+    ],
+    "explanation": "C and D are correct. WHERE filters individual rows before grouping and aggregation. HAVING filters groups and can contain aggregate expressions, including inside a subquery. WHERE and HAVING may coexist regardless of whether they mention the same base columns, and HAVING expressions do not all have to be projected in the SELECT list.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — SELECT",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-33",
+    "set": "D",
+    "number": 33,
+    "topic": "Single-row functions",
+    "type": "multiple",
+    "stem": "Which three statements are true about single-row functions? (Choose three.)",
+    "options": {
+      "A": "They can be used only in the WHERE clause of a SELECT statement",
+      "B": "The argument can be a column name, variable, literal or an expression",
+      "C": "The data type returned can be different from the data type of the argument",
+      "D": "They can be nested to any level",
+      "E": "They can accept only one argument",
+      "F": "They return a single result row per table"
+    },
+    "answers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "B, C, and D are correct. A single-row function can accept a column, literal, variable, or expression, can return a data type different from its argument, and functions can be nested. Such functions may appear in several clauses, can accept varying numbers of arguments, and return one result per input row rather than one row per table.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Single-Row Functions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Single-Row-Functions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-34",
+    "set": "D",
+    "number": 34,
+    "topic": "Logical and physical storage",
+    "type": "multiple",
+    "stem": "Which three statements are true concerning logical and physical database structures? (Choose three.)",
+    "options": {
+      "A": "All tablespaces may have one or more data files",
+      "B": "The extents of a segment must always reside in the same datafile",
+      "C": "A smallfile tablespace might be bigger than a bigfile tablespace",
+      "D": "A segment can span multiple data files in some tablespaces",
+      "E": "A segment's blocks can be of different sizes",
+      "F": "A segment might have only one extent",
+      "G": "Segments can span multiple tablespaces"
+    },
+    "answers": [
+      "C",
+      "D",
+      "F"
+    ],
+    "explanation": "C, D, and F are correct. A smallfile tablespace can contain many files and may therefore exceed a particular bigfile tablespace in total size. A segment may span datafiles within its one tablespace, and a newly allocated segment may consist of one extent. A segment cannot span tablespaces, and its blocks use the tablespace block size.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Physical Storage Structures",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/physical-storage-structures.html"
+      },
+      {
+        "title": "Oracle Database 19c Concepts — Logical Storage Structures",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/logical-storage-structures.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-35",
+    "set": "D",
+    "number": 35,
+    "topic": "SQL client DESCRIBE command",
+    "type": "multiple",
+    "stem": "Which three statements are true about the DESCRIBE command? (Choose three.)",
+    "options": {
+      "A": "It displays the PRIMARY KEY constraint for any column or columns that have that constraint",
+      "B": "It can be used from SQL Developer",
+      "C": "It displays the NOT NULL constraint for any columns that have that constraint",
+      "D": "It can be used to display the structure of an existing view",
+      "E": "It displays all constraints that are defined for each column",
+      "F": "It can be used only from SQL*Plus"
+    },
+    "answers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "B, C, and D are correct. DESCRIBE is supported by SQL Developer as well as SQL*Plus, can describe views, and marks columns that are NOT NULL. It is a client command rather than SQL and does not list every constraint or reliably identify primary-key membership; data dictionary views are required for complete constraint metadata.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Data Dictionary and Dynamic Performance Views",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-dictionary-and-dynamic-performance-views.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-36",
+    "set": "D",
+    "number": 36,
+    "topic": "Self joins",
+    "type": "multiple",
+    "stem": "Which three statements are true about a self join? (Choose three.)",
+    "options": {
+      "A": "The ON clause must be used",
+      "B": "The query must use two different aliases for the table",
+      "C": "It must be an equijoin",
+      "D": "It must be an inner join",
+      "E": "The ON clause can be used",
+      "F": "It can be an outer join"
+    },
+    "answers": [
+      "B",
+      "E",
+      "F"
+    ],
+    "explanation": "B, E, and F are correct. A self join treats one table as two row sources, so distinct correlation names are needed to distinguish them. ANSI ON syntax can express the relationship, and a self join can be an outer join. It need not be an equijoin, inner join, or use ON if valid alternative join syntax is used.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Joins",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-37",
+    "set": "D",
+    "number": 37,
+    "topic": "SQL*Plus substitution variables",
+    "type": "single",
+    "stem": "You want to write a query that prompts for two column names and the WHERE condition each time it is executed in a session but only prompts for the table name the first time it is executed. The variables used in your query are never undefined in your session. Which query can be used?",
+    "options": {
+      "A": "SELECT &&col1, &&col2 FROM &table WHERE &&condition = &&cond",
+      "B": "SELECT &col1, &col2 FROM &&table WHERE &condition",
+      "C": "SELECT &col1, &col2 FROM \"&table\" WHERE &condition",
+      "D": "SELECT '&&col1', '&&col2' FROM &table WHERE '&&condition' = '&cond'",
+      "E": "SELECT &&col1, &&col2 FROM &table WHERE &&condition"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "B is correct. A single ampersand prompts whenever a value is needed, so the two columns and WHERE condition are requested each execution. A double ampersand defines and retains the table variable after the first prompt, so later executions reuse it. Quoting the table name or substitution expressions would change identifier or expression semantics.",
+    "references": [
+      {
+        "title": "SQL*Plus User's Guide — Using Substitution Variables",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqpug/using-substitution-variables-sqlplus.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-38",
+    "set": "D",
+    "number": 38,
+    "topic": "Table compression",
+    "type": "single",
+    "stem": "Which compression method is recommended for direct-path insert operations?",
+    "options": {
+      "A": "COLUMN STORE COMPRESS BASIC",
+      "B": "COLUMN STORE COMPRESS ADVANCED",
+      "C": "ROW STORE COMPRESS BASIC",
+      "D": "ROW STORE COMPRESS ADVANCED"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "C is correct. ROW STORE COMPRESS BASIC is designed for bulk/direct-path loading; conventional DML does not maintain compression for newly inserted rows in the same way. ROW STORE COMPRESS ADVANCED is intended for OLTP DML, while column-store choices are In-Memory or Hybrid Columnar Compression concepts rather than the recommended basic direct-path row compression here.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Tables",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tables.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-39",
+    "set": "D",
+    "number": 39,
+    "topic": "Oracle Managed Files",
+    "type": "multiple",
+    "stem": "In your data center, Oracle Managed Files (OMF) is used for all databases. All tablespaces are smallfile tablespaces. SALES_Q1 is a permanent user-defined tablespace in the SALES database. Examine this command which is about to be issued by a DBA logged in to the SALES database: ALTER TABLESPACE sales_q1 ADD DATAFILE; Which are two actions, either one of which you could take to ensure that the command executes successfully? (Choose two.)",
+    "options": {
+      "A": "Ensure that DB_RECOVERY_FILE_DEST and DB_CREATE_FILE_DEST each specify with at least 50 Mb of available space.",
+      "B": "Specify a path in the DATAFILE clause of the command specifying a location with at least 100M of available space.",
+      "C": "Ensure that DB_CREATE_FILE_DEST specifies a location with at least 100 Mb of available space.",
+      "D": "Add the AUTOEXTEND ON clause with NEXT set to 100M.",
+      "E": "Ensure that DB_RECOVERY_FILE_DEST and DB_CREATE_FILE_DEST each specify locations with at least 50 Mb of available space."
+    },
+    "answers": [
+      "B",
+      "C"
+    ],
+    "explanation": "B and C are valid alternatives. The DBA can explicitly name a datafile in a revised DATAFILE clause and ensure enough space, or leave the name omitted and set DB_CREATE_FILE_DEST so OMF creates the file there. DB_RECOVERY_FILE_DEST is not required for this normal tablespace datafile, and AUTOEXTEND does not supply a missing creation destination.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Tablespaces",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tablespaces.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-40",
+    "set": "D",
+    "number": 40,
+    "topic": "Undo retention guarantee",
+    "type": "single",
+    "stem": "In the ORCL database, UNDOTBS1 is the active undo tablespace with these properties: 1. A size of 100 MB 2. AUTOEXTEND is off 3. UNDO_RETENTION is set to 15 minutes 4. It has RETENTION GUARANTEE UNDOTBS1 fills with uncommitted undo 10 minutes after the database opens. What will happen when the next update is attempted by any transaction?",
+    "options": {
+      "A": "It succeeds and the generated undo is stored in SYSTEM.",
+      "B": "It fails and returns the error message \"ORA-30036: unable to extend segment by 8 in undo tablespace 'UNDOTBS1'\".",
+      "C": "It succeeds and the least recently written undo block of UNDOTBS1 is overwritten by the generated undo.",
+      "D": "It succeeds and the generated undo is stored in SYSAUX.",
+      "E": "It succeeds and the least recently read undo block of UNDOTBS1 is overwritten by the generated undo."
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "B is correct. RETENTION GUARANTEE prevents Oracle from overwriting unexpired undo even when the fixed-size undo tablespace is full. With AUTOEXTEND off and the space occupied by uncommitted undo, the next update cannot allocate undo and fails with ORA-30036 instead of spilling undo into SYSTEM or SYSAUX or overwriting protected blocks.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Undo",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-undo.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-41",
+    "set": "D",
+    "number": 41,
+    "topic": "Global temporary tables",
+    "type": "multiple",
+    "stem": "Which three statements are true about GLOBAL TEMPORARY TABLES? (Choose three.)",
+    "options": {
+      "A": "A TRUNCATE command issued in a session causes all rows in a GLOBAL TEMPORARY TABLE for the issuing session to be deleted.",
+      "B": "GLOBAL TEMPORARY TABLE rows inserted by a session are available to any other session whose user has been granted select on the table.",
+      "C": "GLOBAL TEMPORARY TABLE space allocation occurs at session start.",
+      "D": "Any GLOBAL TEMPORARY TABLE rows existing at session termination will be deleted.",
+      "E": "A GLOBAL TEMPORARY TABLE'S definition is available to multiple sessions.",
+      "F": "A DELETE command on a GLOBAL TEMPORARY TABLE cannot be rolled back."
+    },
+    "answers": [
+      "A",
+      "D",
+      "E"
+    ],
+    "explanation": "A, D, and E are correct. The table definition is shared and persistent, but each session sees only its own temporary rows. TRUNCATE removes the issuing session's rows, and remaining rows disappear when the session ends (or at commit for transaction-specific rows). Allocation occurs when needed, and ordinary DELETE remains transactional and rollbackable.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Tables",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tables.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-42",
+    "set": "D",
+    "number": 42,
+    "topic": "Oracle Net advanced connections",
+    "type": "multiple",
+    "stem": "Which three statements are true about advanced connection options supported by Oracle Net for connection to Oracle Database instances? (Choose three.)",
+    "options": {
+      "A": "Connect Time Failover requires the use of Transparent Application Failover (TAF)",
+      "B": "Source Routing requires the use of a name server",
+      "C": "Source Routing enables the use of Connection Manager (CMAN) which enables network traffic to be routed through a firewall",
+      "D": "Load Balancing can balance the number of connections to dispatchers when using a Shared Server configuration",
+      "E": "Load Balancing requires the use of a name server",
+      "F": "Connect Time Failover requires the connect string to have two or more listener addresses configured"
+    },
+    "answers": [
+      "C",
+      "D",
+      "F"
+    ],
+    "explanation": "C, D, and F are correct. Source routing can force a connection path through Oracle Connection Manager, including across a firewall. Client-side load balancing can distribute connections among shared-server dispatchers, and connect-time failover needs multiple listener addresses to try. These features do not inherently require a naming server or TAF.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Net Services Administrator's Guide",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/netag/index.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-43",
+    "set": "D",
+    "number": 43,
+    "topic": "Alert log",
+    "type": "multiple",
+    "stem": "Which three activities are recorded in the database alert log? (Choose three.)",
+    "options": {
+      "A": "Data Definition Language (DDL) statements",
+      "B": "non-default database parameters",
+      "C": "block corruption errors",
+      "D": "deadlock errors",
+      "E": "session logins and logouts"
+    },
+    "answers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "B, C, and D are correct. At startup Oracle records nondefault initialization parameter values, and the alert log records block-corruption and deadlock errors. It logs selected administrative DDL rather than every DDL statement, and ordinary session logins and logouts are auditing events rather than standard alert-log entries.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Monitoring the Database",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/monitoring-the-database.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-44",
+    "set": "D",
+    "number": 44,
+    "topic": "Datetime functions",
+    "type": "single",
+    "stem": "The EMPLOYEES table contains columns EMP_ID of data type NUMBER and HIRE_DATE of data type DATE. You want to display the date of the first Monday after the completion of six months since hiring. The NLS_TERRITORY parameter is set to AMERICA in the session and, therefore, Sunday is the first day on the week. Which query can be used?",
+    "options": {
+      "A": "SELECT emp_id, ADD_MONTHS(hire_date, 6), NEXT_DAY('MONDAY') FROM employees",
+      "B": "SELECT emp_id, NEXT_DAY(ADD_MONTHS(hire_date, 6), 'MONDAY') FROM employees",
+      "C": "SELECT emp_id, NEXT_DAY(MONTHS_BETWEEN(hire_date, SYSDATE), 6) FROM employees",
+      "D": "SELECT emp_id, NEXT_DAY(ADD_MONTHS(hire_date, 6), 1) FROM employees"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "B is correct. ADD_MONTHS(hire_date, 6) computes the six-month completion date, and NEXT_DAY(..., 'MONDAY') returns the first Monday strictly after that date. NEXT_DAY needs both a date and weekday argument; MONTHS_BETWEEN returns a number, and numeric weekday 1 follows territory settings and represents Sunday here, not Monday.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Single-Row Functions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Single-Row-Functions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-45",
+    "set": "D",
+    "number": 45,
+    "topic": "Datetime formatting",
+    "type": "single",
+    "stem": "You execute this query: SELECT TO_CHAR(NEXT_DAY(LAST_DAY(SYSDATE), 'MON'), 'dd \"Monday for\" fmMonth rrrr') What is the result?",
+    "options": {
+      "A": "It executes successfully but returns no result",
+      "B": "It returns the date for the first Monday of the next month",
+      "C": "It generates an error",
+      "D": "It returns the date for the last Monday of the current month"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "B is correct. LAST_DAY(SYSDATE) returns the final day of the current month. NEXT_DAY from that date to MON must therefore be the first Monday after month-end, which lies in the next month. TO_CHAR then formats that valid date with literal text, so the expression neither errors nor returns the current month's last Monday.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Single-Row Functions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Single-Row-Functions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-46",
+    "set": "D",
+    "number": 46,
+    "topic": "Operator precedence",
+    "type": "multiple",
+    "stem": "Which two statements are true about the rules of precedence for operators? (Choose two.)",
+    "options": {
+      "A": "The concatenation operator | | is always evaluated before addition and subtraction in an expression",
+      "B": "NULLS influence the precedence of operators in an expression",
+      "C": "The + binary operator has the highest precedence in an expression in a SQL statement",
+      "D": "Arithmetic operators with equal precedence are evaluated from left to right within an expression",
+      "E": "Multiple parentheses can be used to override the default precedence of operators in an expression"
+    },
+    "answers": [
+      "D",
+      "E"
+    ],
+    "explanation": "D and E are correct. Operators at the same precedence level are evaluated left to right, and parentheses can be nested to force a desired evaluation order. Null values do not redefine precedence, unary operators outrank binary addition, and concatenation is not universally evaluated ahead of arithmetic in every expression.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Conditions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Conditions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-47",
+    "set": "D",
+    "number": 47,
+    "topic": "Synonyms",
+    "type": "multiple",
+    "stem": "Which three statements are true about Oracle synonyms? (Choose three.)",
+    "options": {
+      "A": "A synonym cannot be created for a PL/SQL package",
+      "B": "A synonym can be available to all users",
+      "C": "A SEQUENCE can have a synonym",
+      "D": "A synonym created by one user can refer to an object belonging to another user",
+      "E": "Any user can drop a PUBLIC synonym"
+    },
+    "answers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "B, C, and D are correct. A PUBLIC synonym can be available to all users, sequences are valid synonym targets, and a private synonym may refer to an object in another schema. Packages can also have synonyms. Dropping a PUBLIC synonym requires the appropriate system privilege; it is not permitted to every user.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — CREATE SYNONYM",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-SYNONYM.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-48",
+    "set": "D",
+    "number": 48,
+    "topic": "Tablespace and datafile views",
+    "type": "multiple",
+    "stem": "Which two statements are true about views used for viewing tablespace and datafile information? (Choose two.)",
+    "options": {
+      "A": "Tablespace free space can be viewed in V$TABLESPACE",
+      "B": "V$TABLESPACE displays information that is contained in the controlfile about tablespaces",
+      "C": "V$TABLESPACE displays information about tablespaces contained in the data dictionary",
+      "D": "Tablespace free space can be viewed in DBA_TABLESPACES",
+      "E": "A datafile can be renamed when the database is in MOUNT state and the new file name is displayed when querying DBA_DATA_FILES after the database is opened"
+    },
+    "answers": [
+      "B",
+      "E"
+    ],
+    "explanation": "B and E are correct. V$TABLESPACE exposes tablespace records maintained in the control file. A datafile can be renamed while the database is mounted using the appropriate control-file update, and DBA_DATA_FILES reflects the new name after open. Free-space details come from views such as DBA_FREE_SPACE, not V$TABLESPACE or DBA_TABLESPACES alone.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Physical Storage Structures",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/physical-storage-structures.html"
+      },
+      {
+        "title": "Oracle Database 19c Concepts — Data Dictionary and Dynamic Performance Views",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-dictionary-and-dynamic-performance-views.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-49",
+    "set": "D",
+    "number": 49,
+    "topic": "Automatic Diagnostic Repository",
+    "type": "multiple",
+    "stem": "Which two statements are true about the Automatic Diagnostic Repository (ADR)? (Choose two.)",
+    "options": {
+      "A": "The ADR base defaults to $ORACLE_HOME/rdbms/admin if neither DIAGNOSTIC_DEST nor ORACLE_BASE is set",
+      "B": "The ADR base defaults to $ORACLE_HOME/dbs if the DIAGNOSTIC_DEST parameter and the ORACLE_BASE environment variable are not set",
+      "C": "It supports diagnostics for Automatic Storage Management (ASM)",
+      "D": "It supports diagnostics for Oracle Clusterware",
+      "E": "It is held inside an Oracle database schema"
+    },
+    "answers": [
+      "C",
+      "D"
+    ],
+    "explanation": "C and D are correct. ADR is a file-system repository with homes for multiple Oracle components, including ASM and Oracle Clusterware as well as database instances and listeners. It is not stored in a database schema, and the proposed ORACLE_HOME/rdbms/admin or ORACLE_HOME/dbs fallback locations are not the documented ADR base behavior.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Diagnosing and Resolving Problems",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/diagnosing-and-resolving-problems.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-50",
+    "set": "D",
+    "number": 50,
+    "topic": "Transactions and rollback",
+    "type": "multiple",
+    "stem": "Examine the description of the BOOKS table: The table has 100 rows. Examine this sequence of statements issued in a new session: INSERT INTO books VALUES ('ADV112', 'Adventures of Tom Sawyer', NULL, NULL); SAVEPOINT a; DELETE FROM books; ROLLBACK TO SAVEPOINT a; ROLLBACK; Which two statements are true? (Choose two.)",
+    "options": {
+      "A": "The second ROLLBACK command does nothing",
+      "B": "The second ROLLBACK command replays the delete",
+      "C": "The first ROLLBACK command restores the 101 rows that were deleted, leaving the inserted row still to be committed",
+      "D": "The second ROLLBACK command undoes the insert",
+      "E": "The first ROLLBACK command restores the 101 rows that were deleted and commits the inserted row"
+    },
+    "answers": [
+      "C",
+      "D"
+    ],
+    "explanation": "C and D are correct. ROLLBACK TO a reverses only work after savepoint A, so it restores the 101 deleted rows while leaving the earlier inserted row uncommitted. The final full ROLLBACK then undoes that insert. Rolling back to a savepoint does not commit earlier work, and a later rollback never replays a delete.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Transactions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/transactions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-51",
+    "set": "D",
+    "number": 51,
+    "topic": "Undo segments",
+    "type": "multiple",
+    "stem": "Which three statements are true about undo segments and the use of undo by transactions in an Oracle database instance? (Choose three.)",
+    "options": {
+      "A": "An undo segment may be used by multiple transactions simultaneously",
+      "B": "Undo segments can wrap around to the first extent when a transaction fills the last extent of the undo segment",
+      "C": "Undo segments have a minimum of three extents",
+      "D": "Undo segments can extend when a transaction fills the last extent of the undo segment",
+      "E": "A single transaction may use multiple undo segments simultaneously",
+      "F": "Undo segments must be stored in a BIGFILE tablespace",
+      "G": "Undo segments must be stored in a SMALLFILE tablespace"
+    },
+    "answers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "A, B, and D are correct. Multiple transactions can use one undo segment, whose extents are treated cyclically. If the next reusable extent contains active undo, Oracle can extend the segment. A transaction is assigned to one undo segment at a time, and undo tablespaces are not required to be exclusively BIGFILE or SMALLFILE.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Logical Storage Structures",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/logical-storage-structures.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-52",
+    "set": "D",
+    "number": 52,
+    "topic": "Datetime and time-zone data types",
+    "type": "multiple",
+    "stem": "Which three statements are true about time zones, date data types, and timestamp data types in an Oracle database? (Choose three.)",
+    "options": {
+      "A": "The CURRENT_TIMESTAMP function returns data without time zone information",
+      "B": "A TIMESTAMP WITH LOCAL TIMEZONE data type column is stored in the database using the time zone of the session that inserted the row",
+      "C": "A TIMESTAMP data type column contains information about year, month, and day",
+      "D": "The DBTIMEZONE function can return an offset from Universal Coordinated Time (UTC)",
+      "E": "The SESSIONTIMEZONE function can return an offset from Universal Coordinated Time (UTC)"
+    },
+    "answers": [
+      "C",
+      "D",
+      "E"
+    ],
+    "explanation": "C, D, and E are correct. TIMESTAMP includes calendar date fields plus time and optional fractional seconds. DBTIMEZONE and SESSIONTIMEZONE can each return UTC offsets. CURRENT_TIMESTAMP includes time-zone information, while TIMESTAMP WITH LOCAL TIME ZONE values are normalized to the database time zone for storage and displayed in the session time zone rather than stored in the inserting session's zone.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — CURRENT_TIMESTAMP",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CURRENT_TIMESTAMP.html"
+      },
+      {
+        "title": "Oracle Database 19c SQL Language Reference — CURRENT_DATE",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CURRENT_DATE.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-53",
+    "set": "D",
+    "number": 53,
+    "topic": "LIKE pattern matching",
+    "type": "single",
+    "stem": "You want to display details of all customers who reside in cities starting with the letter D and containing at least one additional character. Which query can be used?",
+    "options": {
+      "A": "SELECT * FROM customers WHERE city LIKE 'D_%'",
+      "B": "SELECT * FROM customers WHERE city = '%D_'",
+      "C": "SELECT * FROM customers WHERE city LIKE 'D_'",
+      "D": "SELECT * FROM customers WHERE city = 'D_%'"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "A is correct. LIKE interprets underscore as exactly one character and percent as zero or more characters. Therefore D_% matches values beginning with D that contain at least one additional character, with any remaining suffix permitted. Equality does not interpret underscore or percent as wildcard characters.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Conditions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Conditions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-54",
+    "set": "D",
+    "number": 54,
+    "topic": "Shared server architecture",
+    "type": "multiple",
+    "stem": "Which three functions are performed by dispatchers in a shared server configuration? (Choose three.)",
+    "options": {
+      "A": "writing inbound request to the common request queue from all shared server connections",
+      "B": "checking for outbound shared server responses on the common outbound response queue",
+      "C": "receiving inbound requests from processes using shared server connections",
+      "D": "sending each connection input request to the appropriate shared server input queue",
+      "E": "broadcasting shared server session responses back to requesters on all connections",
+      "F": "sending shared server session responses back to requesters on the appropriate connection"
+    },
+    "answers": [
+      "A",
+      "C",
+      "F"
+    ],
+    "explanation": "A, C, and F are correct. A dispatcher receives requests from its client connections, places those requests on the common request queue for shared servers, and returns completed responses to the appropriate client connection. Shared servers do not have separate dispatcher input queues, and responses are not broadcast to every connection.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Process Architecture",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/process-architecture.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-55",
+    "set": "D",
+    "number": 55,
+    "topic": "Inner and outer joins",
+    "type": "multiple",
+    "stem": "Which three statements are true about inner and outer joins? (Choose three.)",
+    "options": {
+      "A": "A full outer join returns matched and unmatched rows",
+      "B": "An inner join returns matched rows",
+      "C": "Outer joins can only be used between two tables per query",
+      "D": "A full outer join must use Oracle syntax",
+      "E": "Outer joins can be used when there are multiple join conditions on two tables",
+      "F": "A left or right outer join returns only unmatched rows"
+    },
+    "answers": [
+      "A",
+      "B",
+      "E"
+    ],
+    "explanation": "A, B, and E are correct. Inner joins return rows satisfying the join condition; full outer joins include matches plus unmatched rows from both sides; and multiple predicates can participate in an outer join. Outer joins can involve more than two tables, ANSI syntax supports FULL OUTER JOIN, and left/right joins also return matched rows.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Joins",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-56",
+    "set": "D",
+    "number": 56,
+    "topic": "INTERSECT",
+    "type": "multiple",
+    "stem": "Which two statements are true about the results of using the INTERSECT operator in compound queries? (Choose two.)",
+    "options": {
+      "A": "Column names in each SELECT in the compound query can be different",
+      "B": "The number of columns in each SELECT in the compound query can be different",
+      "C": "Reversing the order of the intersected tables can sometimes affect the output",
+      "D": "INTERSECT returns rows common to both sides of the compound query",
+      "E": "INTERSECT ignores NULLs"
+    },
+    "answers": [
+      "A",
+      "D"
+    ],
+    "explanation": "A and D are correct. Corresponding select-list expressions must match in count and compatible data-type groups, but their column names can differ; the output names derive from the first query. INTERSECT returns distinct rows common to both inputs, treats nulls during set comparison, and reversing its two inputs does not change the set of returned rows.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Set Operators",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/The-UNION-ALL-INTERSECT-MINUS-Operators.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-57",
+    "set": "D",
+    "number": 57,
+    "topic": "Advanced row compression",
+    "type": "single",
+    "stem": "You want to use table compression suitable for OLTP that will: Compress rows for all DML statements on that table Minimize the overheads associated with compression Which compression option is best suited for this?",
+    "options": {
+      "A": "COLUMN STORE COMPRESS FOR QUERY LOW",
+      "B": "ROW STORE COMPRESS BASIC",
+      "C": "COLUMN STORE COMPRESS FOR ARCHIVE LOW",
+      "D": "COLUMN STORE COMPRESS FOR ARCHIVE HIGH",
+      "E": "ROW STORE COMPRESS ADVANCED"
+    },
+    "answers": [
+      "E"
+    ],
+    "explanation": "E is correct. ROW STORE COMPRESS ADVANCED is the OLTP-oriented option that maintains row compression for conventional INSERT and UPDATE operations while minimizing compression overhead through Oracle's advanced row-compression mechanism. BASIC is aimed at direct-path/bulk operations, and column-store archive/query modes target different workloads.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Tables",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tables.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-58",
+    "set": "D",
+    "number": 58,
+    "topic": "Profiles and account management",
+    "type": "multiple",
+    "stem": "Which four account management capabilities can be configured using Oracle profiles? (Choose four.)",
+    "options": {
+      "A": "the number of hours for which an account is locked after the configured number of login attempts has been reached",
+      "B": "the number of days for which an account may be inactive before it is locked",
+      "C": "the maximum amount of CPU time allowed for a user's sessions before their account is locked",
+      "D": "the ability to prevent a password from ever being reused",
+      "E": "the number of password changes required within a period of time before a password can be reused",
+      "F": "the number of days for which an account is locked after the configured number of login attempts has been reached",
+      "G": "the maximum number of sessions permitted for a user before the account is locked"
+    },
+    "answers": [
+      "B",
+      "D",
+      "E",
+      "F"
+    ],
+    "explanation": "B, D, E, and F are the account/password controls described. INACTIVE_ACCOUNT_TIME can lock an unused account; PASSWORD_REUSE_TIME and PASSWORD_REUSE_MAX combine to control reuse and can be configured to prevent reuse; and PASSWORD_LOCK_TIME is measured in days after failed logins. CPU and session limits terminate or restrict sessions rather than locking the account, and an hours-only statement misstates the parameter unit.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Security Guide — Configuring User Resource Limits",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-user-resource-limits.html"
+      },
+      {
+        "title": "Oracle Database 19c Security Guide — Managing Database Users",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/managing-security-for-oracle-database-users.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-59",
+    "set": "D",
+    "number": 59,
+    "topic": "Online segment shrink",
+    "type": "multiple",
+    "stem": "Which two are true about shrinking a segment online? (Choose two.)",
+    "options": {
+      "A": "It is not possible to shrink either indexes or Index Organized Tables (IOTs)",
+      "B": "It always eliminates all migrated rows if any exist in the table",
+      "C": "To shrink a table it must have a PRIMARY KEY constraint",
+      "D": "To shrink a table it must have a UNIQUE KEY constraint",
+      "E": "To shrink a table it must have row movement enabled",
+      "F": "It must be in a tablespace that uses Automatic Segment Space Management (ASSM)"
+    },
+    "answers": [
+      "E",
+      "F"
+    ],
+    "explanation": "E and F are correct. A table must allow row movement because shrink can change row locations, and the segment must reside in a locally managed tablespace using ASSM. Primary or unique keys are not prerequisites. Some indexes and IOT-related segments are eligible subject to restrictions, and shrink does not promise to eliminate every migrated row.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Space for Schema Objects",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-space-for-schema-objects.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-60",
+    "set": "D",
+    "number": 60,
+    "topic": "Oracle Net configuration tools",
+    "type": "multiple",
+    "stem": "Which three statements are true about the tools used to configure Oracle Net Services? (Choose three.)",
+    "options": {
+      "A": "The Oracle Net Configuration Assistant is only used when running the Oracle installer",
+      "B": "Oracle Net Manager can be used to centrally configure listeners on any database server target",
+      "C": "The lsnrctl utility requires a listener.ora file to exist before it is started",
+      "D": "Oracle Net Manager can be used to locally configure naming methods on a database server",
+      "E": "Enterprise Manager Cloud Control can be used to centrally configure listeners on any managed database server",
+      "F": "Enterprise Manager Cloud Control can be used to centrally configure net service names for any database server target"
+    },
+    "answers": [
+      "D",
+      "E",
+      "F"
+    ],
+    "explanation": "D, E, and F are correct. Oracle Net Manager can configure local naming methods, while Enterprise Manager Cloud Control can centrally administer listeners and net service names on managed targets. Net Configuration Assistant is usable outside installation, and a listener can start with default behavior or dynamic registration without requiring a pre-existing listener.ora file.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Net Services Administrator's Guide",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/netag/index.html"
+      },
+      {
+        "title": "Oracle Database 19c Net Services Administrator's Guide — Configuring the Listener",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/netag/configuring-and-administering-oracle-net-listener.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-61",
+    "set": "D",
+    "number": 61,
+    "topic": "Numeric and datetime functions",
+    "type": "multiple",
+    "stem": "Which two statements are true about single row functions? (Choose two.)",
+    "options": {
+      "A": "MOD : returns the quotient of a division operation",
+      "B": "FLOOR : returns the smallest integer greater than or equal to a specified number",
+      "C": "TRUNC : can be used with NUMBER and DATE values",
+      "D": "CONCAT : can be used to combine any number of values",
+      "E": "CEIL : can be used for positive and negative numbers"
+    },
+    "answers": [
+      "C",
+      "E"
+    ],
+    "explanation": "C and E are correct. TRUNC has numeric and DATE forms, and CEIL works for both positive and negative numeric values. MOD returns a remainder, FLOOR returns the greatest integer less than or equal to its input, and CONCAT accepts two arguments per invocation although calls can be nested.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Single-Row Functions",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Single-Row-Functions.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-62",
+    "set": "D",
+    "number": 62,
+    "topic": "MINUS set operator",
+    "type": "single",
+    "stem": "Examine the description of the SALES1 table: SALES2 is a table with the same description as SALES1. Some sales data is duplicated in both tables. You want to display the rows from the SALES1 table which are not present in the SALES2 table. Which set operator generates the required output?",
+    "options": {
+      "A": "INTERSECT",
+      "B": "UNION ALL",
+      "C": "UNION",
+      "D": "SUBTRACT",
+      "E": "MINUS"
+    },
+    "answers": [
+      "E"
+    ],
+    "explanation": "E is correct. Oracle MINUS returns distinct rows produced by the first component query that are absent from the second, exactly matching SALES1 rows not present in SALES2. INTERSECT returns common rows, UNION combines distinct rows, UNION ALL keeps duplicates, and SUBTRACT is not the Oracle set-operator keyword.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Set Operators",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/The-UNION-ALL-INTERSECT-MINUS-Operators.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-63",
+    "set": "D",
+    "number": 63,
+    "topic": "PMON process group",
+    "type": "multiple",
+    "stem": "Which two statements are true about the PMON background process? (Choose two.)",
+    "options": {
+      "A": "It registers database services with all local and remote listeners known to the database instance",
+      "B": "It frees resources held by abnormally terminated processes",
+      "C": "It records checkpoint information in the control file",
+      "D": "It frees unused temporary segments",
+      "E": "It kills sessions that exceed idle time"
+    },
+    "answers": [
+      "B",
+      "E"
+    ],
+    "explanation": "B is clearly correct: the PMON cleanup group releases locks and other resources left by abnormally terminated client processes. E reflects common exam wording about idle-time enforcement, but Oracle's 19c Security Guide states that the session is terminated for exceeding IDLE_TIME and PMON subsequently cleans it up; it does not unambiguously say PMON itself performs the kill. Keep E as the source's second answer pending lab or exam-author clarification.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Process Architecture",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/process-architecture.html"
+      },
+      {
+        "title": "Oracle Database 19c Security Guide — Configuring User Resource Limits",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/configuring-user-resource-limits.html"
+      }
+    ],
+    "confidence": "needs-review",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-64",
+    "set": "D",
+    "number": 64,
+    "topic": "Private database links",
+    "type": "single",
+    "stem": "The SCOTT/TIGER user exists in two databases, BOSTON_DB and DALLAS_DB, in two different locations. Each database has a tnsnames.ora file defining DALLAS_DB as a service name. Examine this command: CREATE DATABASE LINK dblink1 CONNECT TO scott IDENTIFIED BY tiger USING 'dallas_db'; How do you execute the command so that only SCOTT in BOSTON_DB can access the SCOTT schema in DALLAS_DB?",
+    "options": {
+      "A": "as SCOTT in DALLAS_DB",
+      "B": "as SCOTT in BOSTON_DB",
+      "C": "as SCOTT in BOSTON_DB and SYS in DALLAS_DB",
+      "D": "as SYS in both the databases",
+      "E": "as SCOTT in both the databases"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "B is correct. Creating the link while connected as SCOTT in BOSTON_DB creates a private database link in SCOTT's local schema; its USING clause resolves the DALLAS_DB service and its fixed credentials connect as remote SCOTT. No command must be executed as SYS or in DALLAS_DB merely to create that private local link.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — CREATE DATABASE LINK",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-DATABASE-LINK.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-65",
+    "set": "D",
+    "number": 65,
+    "topic": "Subqueries",
+    "type": "multiple",
+    "stem": "Which two tasks require a subquery? (Choose two.)",
+    "options": {
+      "A": "Display the number of products whose PROD_LIST_PRICE is more than the average PROD_LIST_PRICE",
+      "B": "Display suppliers whose PROD_LIST_PRICE is less than 1000",
+      "C": "Display products whose PROD_MIN_PRICE is more than the average PROD_LIST_PRICE of all products, and whose status is orderable",
+      "D": "Display the total number of products supplied by supplier 102 which have a product status of obsolete",
+      "E": "Display the minimum PROD_LIST_PRICE for each product status"
+    },
+    "answers": [
+      "A",
+      "C"
+    ],
+    "explanation": "A and C require a subquery because each compares row values with an aggregate average calculated over a set of products. The remaining requests can be answered with a simple WHERE filter and/or GROUP BY aggregate in one query block; they do not need a nested query to obtain a comparison value.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — SELECT",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-66",
+    "set": "D",
+    "number": 66,
+    "topic": "DISTINCT and concatenation",
+    "type": "multiple",
+    "stem": "Examine the description of the PROMOTIONS table: You want to display the unique promotion costs in each promotion category. Which two queries can be used? (Choose two.)",
+    "options": {
+      "A": "SELECT promo_cost, promo_category FROM promotions ORDER BY 1",
+      "B": "SELECT DISTINCT promo_cost || ' in ' || DISTINCT promo_category FROM promotions ORDER BY 1",
+      "C": "SELECT DISTINCT promo_category || ' has ' || promo_cost AS costs FROM promotions ORDER BY 1",
+      "D": "SELECT promo_category, DISTINCT promo_cost FROM promotions ORDER BY 2",
+      "E": "SELECT DISTINCT promo_category, promo_cost FROM promotions ORDER BY 1"
+    },
+    "answers": [
+      "C",
+      "E"
+    ],
+    "explanation": "C and E are correct. DISTINCT applies to the complete select list, so E returns unique category/cost pairs, while C concatenates each pair into one expression and then removes duplicate expression results. DISTINCT cannot be inserted independently before multiple columns or operands as in B and D, and A does not remove duplicates.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — SELECT",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-67",
+    "set": "D",
+    "number": 67,
+    "topic": "Data dictionary",
+    "type": "multiple",
+    "stem": "Which three statements are true about the Oracle Data Dictionary? (Choose three.)",
+    "options": {
+      "A": "Data dictionary views are created by joins of dictionary base tables and DBA-defined tables",
+      "B": "The data dictionary is created and maintained by the database administrator",
+      "C": "Views with the same name but different prefixes, such as CDB, DBA, ALL and USER, reference the same base tables from the data dictionary",
+      "D": "Base tables can be queried directly",
+      "E": "It is owned by the SYSTEM user",
+      "F": "Usernames of all users including database administrators are stored in the data dictionary"
+    },
+    "answers": [
+      "C",
+      "D",
+      "F"
+    ],
+    "explanation": "C, D, and F are correct in the intended administrative context. CDB_, DBA_, ALL_, and USER_ families present scoped views over Oracle-maintained dictionary metadata; privileged administrators can query underlying SYS base tables directly, though applications should use views; and user account names are dictionary metadata. Oracle, not the DBA, maintains the dictionary, and SYS—not SYSTEM—owns it.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Concepts — Data Dictionary and Dynamic Performance Views",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-dictionary-and-dynamic-performance-views.html"
+      }
+    ],
+    "confidence": "medium",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-68",
+    "set": "D",
+    "number": 68,
+    "topic": "UNION and UNION ALL",
+    "type": "multiple",
+    "stem": "Which two statements are true regarding the UNION and UNION ALL operators? (Choose two.)",
+    "options": {
+      "A": "Duplicates are eliminated automatically by the UNION ALL operator",
+      "B": "The number of columns selected in each SELECT statement must be identical",
+      "C": "The names of columns selected in each SELECT statement must be identical",
+      "D": "The output is sorted by the UNION ALL operator",
+      "E": "NULLS are not ignored during duplicate checking"
+    },
+    "answers": [
+      "B",
+      "E"
+    ],
+    "explanation": "B and E are correct. Each component query must return the same number of columns with compatible data types. UNION performs duplicate elimination and treats corresponding nulls as duplicates for that purpose, whereas UNION ALL retains duplicates and does not sort as a guaranteed semantic. Output column names need not match between components.",
+    "references": [
+      {
+        "title": "Oracle Database 19c SQL Language Reference — Set Operators",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/The-UNION-ALL-INTERSECT-MINUS-Operators.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-69",
+    "set": "D",
+    "number": 69,
+    "topic": "External tables",
+    "type": "multiple",
+    "stem": "Which three statements are true about external tables in Oracle 18c and later releases? (Choose three.)",
+    "options": {
+      "A": "External table files can be used for other external tables in a different database",
+      "B": "The ORACLE_LOADER access driver can be used to unload data from a database into an external table",
+      "C": "The ORACLE_DATAPUMP access driver can be used to unload data from a database into an external table",
+      "D": "They cannot be partitioned",
+      "E": "The ORACLE_DATAPUMP access driver can be used to load data into a database from an external table",
+      "F": "They support UPDATEs but not INSERTs and DELETEs"
+    },
+    "answers": [
+      "A",
+      "C",
+      "E"
+    ],
+    "explanation": "A, C, and E are correct. An external file can be described by external tables in other databases that can access it. ORACLE_DATAPUMP can unload internal query results to binary dump files with CREATE TABLE AS SELECT and can read those files to load/query data. ORACLE_LOADER cannot unload, external tables can be partitioned in current releases, and they are read-only to normal DML.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Utilities — External Tables Concepts",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sutil/oracle-external-tables-concepts.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-70",
+    "set": "D",
+    "number": 70,
+    "topic": "Deferred segment creation",
+    "type": "single",
+    "stem": "In the SALES database, DEFERRED_SEGMENT_CREATION is TRUE. Examine this command: SQL> CREATE TABLE T1(c1 INT PRIMARY KEY, c2 CLOB); Which segment or segments, if any, are created as a result of executing the command?",
+    "options": {
+      "A": "T1, an index segment for the primary key, a LOB segment, and a lobindex segment",
+      "B": "no segments are created",
+      "C": "T1 only",
+      "D": "T1 and an index segment created for the primary key only",
+      "E": "T1, an index segment for the primary key, and a LOB segment only"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "B is correct. With DEFERRED_SEGMENT_CREATION=TRUE, creating the heap table creates metadata but no table segment until the first row is inserted. Segment creation is also deferred for the implicit primary-key index and the CLOB's LOB and LOB-index segments, so none of those physical segments exists immediately after this CREATE TABLE.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Tables",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tables.html"
+      },
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Managing Indexes",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-indexes.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-71",
+    "set": "D",
+    "number": 71,
+    "topic": "Database startup states",
+    "type": "multiple",
+    "stem": "Your database instance was shut down normally and then started in NOMOUNT state. You then execute this command: ALTER DATABASE MOUNT; Which two actions are performed? (Choose two.)",
+    "options": {
+      "A": "The online redo logs are opened",
+      "B": "The online data files are opened",
+      "C": "The alert log records the execution details",
+      "D": "The Oracle background processes are started",
+      "E": "The initialization parameter file is read",
+      "F": "The control file is read"
+    },
+    "answers": [
+      "C",
+      "F"
+    ],
+    "explanation": "C and F are correct for the transition from NOMOUNT to MOUNT. ALTER DATABASE MOUNT reads and opens the control files so Oracle can associate the already-running instance with the database, and the administrative operation is recorded in the alert log. Background processes and parameter-file reading occurred during STARTUP NOMOUNT; datafiles and online redo logs open during OPEN.",
+    "references": [
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Starting Up and Shutting Down",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/starting-up-and-shutting-down.html"
+      },
+      {
+        "title": "Oracle Database 19c Administrator's Guide — Monitoring the Database",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/monitoring-the-database.html"
+      }
+    ],
+    "confidence": "high",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  },
+  {
+    "id": "D-72",
+    "set": "D",
+    "number": 72,
+    "topic": "SQL*Plus VERIFY setting",
+    "type": "multiple",
+    "stem": "Which two statements are true about the SET VERIFY ON command? (Choose two.)",
+    "options": {
+      "A": "It can be used only in SQL*Plus",
+      "B": "It displays values for variables used only in the WHERE clause of a query",
+      "C": "It can be used in SQL Developer and SQL*Plus",
+      "D": "It displays values for variables created by the DEFINE command",
+      "E": "It displays values for variables prefixed with &&"
+    },
+    "answers": [
+      "C",
+      "E"
+    ],
+    "explanation": "C and E are the intended answers. SQL Developer's script runner and SQL*Plus support SQL*Plus-style substitution, and SET VERIFY ON displays the old and new command text when substitution occurs, including variables introduced with &&. It is not limited to WHERE clauses. A DEFINE-created variable is displayed only when actually substituted, so D as an unconditional statement is too broad.",
+    "references": [
+      {
+        "title": "SQL*Plus User's Guide — Using Substitution Variables",
+        "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqpug/using-substitution-variables-sqlplus.html"
+      }
+    ],
+    "confidence": "medium",
+    "version": "Oracle Database 19c",
+    "shuffleOptions": true
+  }
+]

@@ -1,0 +1,1424 @@
+[
+  {
+    "id": "B-01",
+    "set": "B",
+    "number": 1,
+    "topic": "Architecture",
+    "type": "single",
+    "stem": "In shared server mode, where is a session's User Global Area normally stored so that different shared server processes can access it?",
+    "options": {
+      "A": "In the SGA",
+      "B": "In an online redo log group",
+      "C": "In the control file",
+      "D": "In the client application's memory"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "With shared server, the UGA must be in shared memory in the SGA, typically in the large pool when configured or otherwise in the shared pool. A dedicated server normally keeps the UGA in its PGA.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-02",
+    "set": "B",
+    "number": 2,
+    "topic": "Instance startup and shutdown",
+    "type": "single",
+    "stem": "The database is open for normal use. The DBA must allow only users with the RESTRICTED SESSION privilege to establish new sessions. Which command meets the requirement without restarting the instance?",
+    "options": {
+      "A": "STARTUP NOMOUNT",
+      "B": "ALTER SYSTEM ENABLE RESTRICTED SESSION",
+      "C": "SHUTDOWN TRANSACTIONAL",
+      "D": "ALTER DATABASE OPEN READ ONLY"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "ALTER SYSTEM ENABLE RESTRICTED SESSION limits new logins to users with RESTRICTED SESSION while the database remains open. Existing sessions are not disconnected automatically.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-03",
+    "set": "B",
+    "number": 3,
+    "topic": "Memory and processes",
+    "type": "multiple",
+    "stem": "Which two statements correctly describe Oracle background-process responsibilities?",
+    "options": {
+      "A": "ARCn copies full online redo log groups to archive destinations when archiving is required.",
+      "B": "SMON can perform instance recovery after an instance failure.",
+      "C": "PMON writes dirty buffers from the buffer cache to datafiles.",
+      "D": "CKPT writes redo entries to the online redo log.",
+      "E": "DBWn registers database services with the listener."
+    },
+    "answers": [
+      "A",
+      "B"
+    ],
+    "explanation": "ARCn archives redo logs, and SMON performs instance recovery when required. DBWn writes dirty buffers, LGWR writes redo, and listener registration is handled by LREG.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-04",
+    "set": "B",
+    "number": 4,
+    "topic": "Logical and physical structures",
+    "type": "single",
+    "stem": "Which relationship is valid in an Oracle database?",
+    "options": {
+      "A": "A tablespace can contain blocks from only one segment.",
+      "B": "A segment can span multiple tablespaces.",
+      "C": "An extent consists of contiguous Oracle data blocks in one datafile.",
+      "D": "A data block can belong to multiple extents."
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "An extent is a set of contiguous Oracle blocks allocated in one datafile. Segments do not span tablespaces, and blocks are allocated to one extent.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-05",
+    "set": "B",
+    "number": 5,
+    "topic": "Data dictionary and dynamic performance views",
+    "type": "single",
+    "stem": "An instance was started with an SPFILE. Which dynamic performance view shows the parameter values stored in that SPFILE, including values that may differ from the running instance?",
+    "options": {
+      "A": "V$PARAMETER",
+      "B": "DBA_TABLES",
+      "C": "V$SESSION",
+      "D": "V$SPPARAMETER"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "V$SPPARAMETER displays values in the server parameter file. V$PARAMETER shows parameter values currently in effect for the session or instance.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-06",
+    "set": "B",
+    "number": 6,
+    "topic": "ADR and alert log",
+    "type": "single",
+    "stem": "The DBA wants to inspect the ADR alert log from a command-line diagnostic utility without locating the XML or text file manually. Which ADRCI command is appropriate?",
+    "options": {
+      "A": "SHOW ALERT",
+      "B": "LISTENER STATUS",
+      "C": "ARCHIVE LOG LIST",
+      "D": "SHOW PARAMETER"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "ADRCI SHOW ALERT displays the alert log for the current ADR home. The other commands belong to SQL*Plus or listener administration, not ADRCI alert-log viewing.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-07",
+    "set": "B",
+    "number": 7,
+    "topic": "Initialization files",
+    "type": "multiple",
+    "stem": "An instance was started with an SPFILE. Which two statements are true about ALTER SYSTEM SET?",
+    "options": {
+      "A": "With SCOPE=SPFILE, the change is recorded for a future startup but does not alter memory.",
+      "B": "Every parameter can be changed with SCOPE=MEMORY.",
+      "C": "With SCOPE=MEMORY, the change affects the running instance only.",
+      "D": "SCOPE=SPFILE immediately restarts the instance.",
+      "E": "SCOPE=BOTH is valid when the instance was started only with a text PFILE."
+    },
+    "answers": [
+      "A",
+      "C"
+    ],
+    "explanation": "MEMORY changes only the active instance; SPFILE persists only for a later startup. A text PFILE cannot be updated by SCOPE=BOTH, and static parameters cannot all change in memory.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-08",
+    "set": "B",
+    "number": 8,
+    "topic": "Users and authentication",
+    "type": "single",
+    "stem": "Which clause creates a database user authenticated by an Oracle password?",
+    "options": {
+      "A": "AUTHENTICATED USING password",
+      "B": "IDENTIFIED BY password",
+      "C": "IDENTIFIED EXTERNALLY",
+      "D": "IDENTIFIED GLOBALLY"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "IDENTIFIED BY specifies database password authentication. EXTERNALLY and GLOBALLY delegate authentication.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-09",
+    "set": "B",
+    "number": 9,
+    "topic": "Privileges and least privilege",
+    "type": "single",
+    "stem": "A reporting account must query HR.EMPLOYEES but must not lock its rows with SELECT FOR UPDATE. Which object privilege is the narrowest suitable grant in Oracle Database 19c?",
+    "options": {
+      "A": "SELECT ANY TABLE",
+      "B": "SELECT on HR.EMPLOYEES",
+      "C": "READ on HR.EMPLOYEES",
+      "D": "DBA role"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "READ permits queries but not SELECT FOR UPDATE or LOCK TABLE. SELECT includes those capabilities, while SELECT ANY TABLE and DBA are much broader.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-10",
+    "set": "B",
+    "number": 10,
+    "topic": "Roles and privileges",
+    "type": "single",
+    "stem": "The owner of a definer-rights procedure executes CREATE TABLE through EXECUTE IMMEDIATE. The owner has CREATE TABLE only through a role. Why can execution fail?",
+    "options": {
+      "A": "CREATE TABLE always requires SYSDBA.",
+      "B": "Definer-rights procedures run with the caller's enabled roles.",
+      "C": "Dynamic SQL cannot execute DDL.",
+      "D": "Privileges obtained through roles are disabled in a definer-rights named PL/SQL unit."
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "A definer-rights unit uses the owner's directly granted privileges, not privileges obtained through roles. The owner therefore needs a direct CREATE TABLE grant; native dynamic SQL can execute DDL.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-11",
+    "set": "B",
+    "number": 11,
+    "topic": "Quotas",
+    "type": "single",
+    "stem": "A user has a zero quota on the USERS tablespace but also has the UNLIMITED TABLESPACE system privilege. Which statement is true?",
+    "options": {
+      "A": "UNLIMITED TABLESPACE allows the user to allocate space in USERS despite the quota setting.",
+      "B": "CREATE TABLE automatically revokes UNLIMITED TABLESPACE.",
+      "C": "The explicit zero quota prevents all allocation in USERS.",
+      "D": "The user can allocate space only in temporary tablespaces."
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "UNLIMITED TABLESPACE overrides explicit tablespace quotas for permanent tablespaces. Revoking that system privilege makes the user's individual quotas effective again.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-12",
+    "set": "B",
+    "number": 12,
+    "topic": "Oracle Managed Files",
+    "type": "single",
+    "stem": "Which practice is recommended for files created as Oracle Managed Files?",
+    "options": {
+      "A": "Rename the files directly with operating-system commands while the database is open.",
+      "B": "Reference each file by its Oracle-generated name and let the database manage creation and deletion.",
+      "C": "Store every managed datafile inside the control file.",
+      "D": "Add the generated filenames to tnsnames.ora."
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "OMF uses system-generated names and database commands to manage files. Renaming them behind Oracle's control can leave metadata inconsistent; control files and Oracle Net naming do not contain datafiles.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-13",
+    "set": "B",
+    "number": 13,
+    "topic": "Moving datafiles",
+    "type": "multiple",
+    "stem": "Which two statements are true of ALTER DATABASE MOVE DATAFILE in Oracle Database 19c?",
+    "options": {
+      "A": "It can relocate an online datafile while the database remains open.",
+      "B": "It requires the control file to be recreated before every move.",
+      "C": "It requires the database to be started in NOMOUNT.",
+      "D": "It updates the control-file metadata to the destination filename.",
+      "E": "It can move only tempfiles."
+    },
+    "answers": [
+      "A",
+      "D"
+    ],
+    "explanation": "The statement supports online relocation of a datafile and records the new location in the control file. It does not require NOMOUNT, a control-file rebuild, or a tempfile-only source.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-14",
+    "set": "B",
+    "number": 14,
+    "topic": "Segments and compression",
+    "type": "single",
+    "stem": "A heap table is reorganized with ALTER TABLE ... MOVE ROW STORE COMPRESS BASIC. What additional effect should the DBA plan for?",
+    "options": {
+      "A": "The table can no longer be queried.",
+      "B": "All constraints are permanently removed.",
+      "C": "Indexes on the table can become unusable because the move changes rowids.",
+      "D": "The table is converted into an external table."
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "A conventional table move changes rowids, so indexes can become unusable and may need rebuilding. Compression does not convert the table to external storage or remove constraints.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-15",
+    "set": "B",
+    "number": 15,
+    "topic": "Block space management",
+    "type": "single",
+    "stem": "Which clause selects automatic segment space management when a permanent tablespace is created?",
+    "options": {
+      "A": "UNDO MANAGEMENT AUTO",
+      "B": "EXTENT MANAGEMENT DICTIONARY",
+      "C": "FREELISTS UNLIMITED",
+      "D": "SEGMENT SPACE MANAGEMENT AUTO"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "SEGMENT SPACE MANAGEMENT AUTO enables bitmap-based ASSM for segments in the tablespace. Undo management and extent management are separate choices.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-16",
+    "set": "B",
+    "number": 16,
+    "topic": "Resumable space allocation",
+    "type": "single",
+    "stem": "A resumable INSERT is suspended because a tablespace is full. What happens if the DBA adds space before the timeout?",
+    "options": {
+      "A": "The statement can resume automatically.",
+      "B": "The transaction is always rolled back immediately.",
+      "C": "The instance must be restarted.",
+      "D": "The statement becomes a read-only query."
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "A resumable statement waits for the space error to be corrected and can continue automatically before timeout. Immediate rollback or restart is not required.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-17",
+    "set": "B",
+    "number": 17,
+    "topic": "Undo management",
+    "type": "single",
+    "stem": "A long-running query receives ORA-01555 snapshot too old. Which change most directly improves the chance that required undo remains available?",
+    "options": {
+      "A": "Decrease DB_BLOCK_SIZE.",
+      "B": "Increase undo capacity and set an appropriate UNDO_RETENTION.",
+      "C": "Add more online redo log members.",
+      "D": "Reduce the undo tablespace size."
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "More undo space plus suitable retention helps preserve older read-consistent versions. Redo members and block size do not retain undo.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-18",
+    "set": "B",
+    "number": 18,
+    "topic": "Undo management",
+    "type": "multiple",
+    "stem": "Which two statements are true of RETENTION GUARANTEE on an undo tablespace?",
+    "options": {
+      "A": "DML can fail for lack of undo space rather than overwrite unexpired undo.",
+      "B": "It guarantees that every query completes without ORA-01555 regardless of retention settings.",
+      "C": "It removes the need for online redo logs.",
+      "D": "It causes committed undo to be deleted immediately.",
+      "E": "Oracle does not overwrite unexpired undo in that tablespace."
+    },
+    "answers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Retention guarantee protects unexpired undo from reuse, even if DML then runs out of undo space. It does not guarantee unlimited query duration and does not replace redo.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-19",
+    "set": "B",
+    "number": 19,
+    "topic": "Data Pump",
+    "type": "single",
+    "stem": "A DBA wants to import only table definitions from a dump file, without table rows. Which Data Pump Import parameter should be used?",
+    "options": {
+      "A": "TABLE_EXISTS_ACTION=APPEND",
+      "B": "CONTENT=DATA_ONLY",
+      "C": "CONTENT=METADATA_ONLY",
+      "D": "ESTIMATE_ONLY=YES"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "CONTENT=METADATA_ONLY imports object definitions without row data. DATA_ONLY does the reverse; the other parameters do not select metadata-only import.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-20",
+    "set": "B",
+    "number": 20,
+    "topic": "External tables",
+    "type": "single",
+    "stem": "Which external-table access driver can unload database data into external dump files as well as read compatible dump files?",
+    "options": {
+      "A": "ORACLE_LOADER",
+      "B": "SQL*Net",
+      "C": "DBMS_METADATA",
+      "D": "ORACLE_DATAPUMP"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "ORACLE_DATAPUMP supports reading and writing its external-table dump format. ORACLE_LOADER reads text data but does not unload rows to external files.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-21",
+    "set": "B",
+    "number": 21,
+    "topic": "SQL*Loader",
+    "type": "single",
+    "stem": "A load must insert rows using conventional-path processing and capture malformed input records. Which SQL*Loader artifacts are most relevant?",
+    "options": {
+      "A": "Control file and bad file",
+      "B": "Alert log and control file of the database",
+      "C": "Redo log and archived log only",
+      "D": "SPFILE and password file"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "The SQL*Loader control file describes the load, and rejected malformed records go to the bad file. Database startup and redo files do not define input parsing.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-22",
+    "set": "B",
+    "number": 22,
+    "topic": "Database tools",
+    "type": "multiple",
+    "stem": "Which two tools can execute SQL statements interactively against an Oracle database?",
+    "options": {
+      "A": "Listener Control only",
+      "B": "SQL*Plus",
+      "C": "Oracle SQL Developer",
+      "D": "Data Pump Export only",
+      "E": "DBCA only"
+    },
+    "answers": [
+      "B",
+      "C"
+    ],
+    "explanation": "SQL*Plus and SQL Developer provide interactive SQL execution. DBCA configures databases, LSNRCTL manages listeners, and expdp performs exports.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-23",
+    "set": "B",
+    "number": 23,
+    "topic": "Oracle Net listener",
+    "type": "single",
+    "stem": "Local database connections succeed, but remote clients receive ORA-12541: TNS:no listener. What should the DBA check first?",
+    "options": {
+      "A": "Whether the undo tablespace is autoextensible",
+      "B": "Whether the listener is running on the host and port in the connect descriptor",
+      "C": "Whether every client has SYSDBA",
+      "D": "Whether the database is in ARCHIVELOG mode"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "ORA-12541 indicates no listener at the contacted address. Database privileges, archive mode, and undo capacity do not cause this network endpoint error.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-24",
+    "set": "B",
+    "number": 24,
+    "topic": "Oracle Net naming",
+    "type": "single",
+    "stem": "Which sqlnet.ora parameter controls the order in which naming methods such as TNSNAMES and EZCONNECT are tried?",
+    "options": {
+      "A": "LOCAL_LISTENER",
+      "B": "SERVICE_NAMES",
+      "C": "NAMES.DIRECTORY_PATH",
+      "D": "DB_CREATE_FILE_DEST"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "NAMES.DIRECTORY_PATH specifies client naming-method resolution order. LOCAL_LISTENER and SERVICE_NAMES are database parameters, and DB_CREATE_FILE_DEST controls file creation.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-25",
+    "set": "B",
+    "number": 25,
+    "topic": "Dedicated and shared server",
+    "type": "single",
+    "stem": "In shared server mode, which process accepts a client request from a dispatcher and executes database work?",
+    "options": {
+      "A": "Log writer",
+      "B": "Checkpoint process",
+      "C": "Database writer",
+      "D": "Shared server process"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "A dispatcher routes requests to shared server processes. DBWn, LGWR, and CKPT have storage and checkpoint responsibilities.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-26",
+    "set": "B",
+    "number": 26,
+    "topic": "SELECT and filtering",
+    "type": "single",
+    "stem": "What does NVL2(commission_pct, 'PAID', 'NONE') return when COMMISSION_PCT is NULL?",
+    "options": {
+      "A": "NONE",
+      "B": "The value of COMMISSION_PCT",
+      "C": "PAID",
+      "D": "NULL in all cases"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "NVL2 returns its second argument when the first expression is not null and its third argument when the first expression is null.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-27",
+    "set": "B",
+    "number": 27,
+    "topic": "Sorting and substitution",
+    "type": "single",
+    "stem": "In SQL*Plus, a script contains WHERE department_id = &dept. What occurs when the statement runs and DEPT is undefined?",
+    "options": {
+      "A": "Oracle treats &dept as NULL silently.",
+      "B": "SQL*Plus prompts for a substitution value.",
+      "C": "The database creates a bind variable automatically.",
+      "D": "The statement always filters for department 10."
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "An ampersand denotes a SQL*Plus substitution variable and triggers a prompt if undefined. It is textual substitution, not an automatic bind.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-28",
+    "set": "B",
+    "number": 28,
+    "topic": "Joins",
+    "type": "multiple",
+    "stem": "Which three statements about Oracle join syntax are correct?",
+    "options": {
+      "A": "A USING column cannot be qualified with a table name or alias in the same query block.",
+      "B": "NATURAL JOIN derives equality predicates from columns with matching names and compatible data types.",
+      "C": "An ON clause can express a non-equijoin condition.",
+      "D": "USING requires both column names to be listed with table aliases.",
+      "E": "NATURAL JOIN requires an ON clause.",
+      "F": "CROSS JOIN requires a join condition."
+    },
+    "answers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "USING columns are referenced unqualified, NATURAL JOIN derives joins from common compatible columns, and ON supports arbitrary join conditions. NATURAL and CROSS joins do not use the claimed mandatory conditions.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-29",
+    "set": "B",
+    "number": 29,
+    "topic": "Type conversion",
+    "type": "single",
+    "stem": "Which expression converts valid ISO text to DATE and returns 1 January 2000 if the character conversion fails?",
+    "options": {
+      "A": "CAST(txt AS DATE DEFAULT '2000-01-01')",
+      "B": "TO_CHAR(txt DEFAULT DATE '2000-01-01')",
+      "C": "TO_DATE(txt DEFAULT '2000-01-01' ON CONVERSION ERROR, 'YYYY-MM-DD')",
+      "D": "TO_DATE(NVL(txt,'2000-01-01'))"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "TO_DATE supports DEFAULT return_value ON CONVERSION ERROR. The default is used for conversion errors in the character expression, not for arbitrary evaluation errors.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-30",
+    "set": "B",
+    "number": 30,
+    "topic": "Conditional functions",
+    "type": "single",
+    "stem": "What does NULLIF(a,b) return when A and B compare equal?",
+    "options": {
+      "A": "The text 'EQUAL'",
+      "B": "A",
+      "C": "B",
+      "D": "NULL"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "NULLIF returns NULL when its two expressions compare equal; otherwise it returns the first expression.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-31",
+    "set": "B",
+    "number": 31,
+    "topic": "Single-row string functions",
+    "type": "single",
+    "stem": "What is returned by SUBSTR('DATABASE',5,4)?",
+    "options": {
+      "A": "BASE",
+      "B": "ABAS",
+      "C": "DATA",
+      "D": "ASE"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "Character positions 5 through 8 of DATABASE are BASE. SUBSTR uses one-based positions for positive indexes.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-32",
+    "set": "B",
+    "number": 32,
+    "topic": "Date functions",
+    "type": "single",
+    "stem": "An order_date contains a time component. Which predicate finds all rows on 15 March 2026 without applying a function to order_date?",
+    "options": {
+      "A": "TO_CHAR(order_date) = '15-MAR-26'",
+      "B": "order_date >= DATE '2026-03-15' AND order_date < DATE '2026-03-16'",
+      "C": "order_date BETWEEN DATE '2026-03-15' AND DATE '2026-03-15'",
+      "D": "order_date = DATE '2026-03-15'"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "A half-open range includes every time on the date and can use an index on order_date. Equality or same-endpoint BETWEEN includes only midnight; TO_CHAR depends on formatting and wraps the column.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-33",
+    "set": "B",
+    "number": 33,
+    "topic": "Aggregate functions",
+    "type": "single",
+    "stem": "What does SUM(DISTINCT salary) calculate?",
+    "options": {
+      "A": "NULL whenever any salary is NULL",
+      "B": "The sum of every row, including duplicate salary values",
+      "C": "The sum of the distinct non-null salary values",
+      "D": "The number of distinct salary values"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "DISTINCT removes duplicate input values before SUM, and SUM ignores null inputs. COUNT(DISTINCT salary) would count the distinct non-null values.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-34",
+    "set": "B",
+    "number": 34,
+    "topic": "GROUP BY and HAVING",
+    "type": "single",
+    "stem": "A query selects department_id, job_id, and SUM(salary). Which clause forms one group for each distinct department-and-job combination?",
+    "options": {
+      "A": "HAVING department_id, job_id",
+      "B": "ORDER BY department_id, job_id",
+      "C": "GROUP BY SUM(salary)",
+      "D": "GROUP BY department_id, job_id"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "Listing both nonaggregate columns in GROUP BY creates a group for each distinct pair. HAVING filters groups and ORDER BY only sorts results.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-35",
+    "set": "B",
+    "number": 35,
+    "topic": "Subqueries",
+    "type": "multiple",
+    "stem": "Which two statements correctly describe comparisons with multirow subqueries?",
+    "options": {
+      "A": "NOT IN is unaffected when the subquery returns a NULL.",
+      "B": "x = ANY (subquery) is equivalent to x IN (subquery).",
+      "C": "A multirow subquery can be used only with the equality operator.",
+      "D": "x > ALL (subquery) is true when x exceeds every non-null value returned, subject to SQL null semantics.",
+      "E": "EXISTS requires the subquery select list to contain exactly one column named X."
+    },
+    "answers": [
+      "B",
+      "D"
+    ],
+    "explanation": "ALL requires the comparison to hold for every returned value, and =ANY has the same membership meaning as IN. EXISTS ignores select-list values, and a null in a NOT IN result can make the predicate UNKNOWN.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-36",
+    "set": "B",
+    "number": 36,
+    "topic": "Set operators",
+    "type": "single",
+    "stem": "Which set operator returns distinct rows produced by the first query that are not produced by the second query?",
+    "options": {
+      "A": "MINUS",
+      "B": "INTERSECT",
+      "C": "CROSS APPLY",
+      "D": "UNION ALL"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "MINUS returns distinct rows from the first result that do not occur in the second. INTERSECT returns common rows, and UNION ALL concatenates results.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-37",
+    "set": "B",
+    "number": 37,
+    "topic": "DDL",
+    "type": "single",
+    "stem": "Which statement removes the SALES table and bypasses the recycle bin?",
+    "options": {
+      "A": "DELETE FROM sales",
+      "B": "DROP TABLE sales PURGE",
+      "C": "TRUNCATE TABLE sales",
+      "D": "DROP TABLE sales"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "The PURGE clause permanently drops the table without placing it in the recycle bin. DELETE and TRUNCATE retain the table definition, while an ordinary DROP may use the recycle bin when enabled.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-38",
+    "set": "B",
+    "number": 38,
+    "topic": "Views",
+    "type": "single",
+    "stem": "A view contains GROUP BY and SUM(salary). Which statement is generally true?",
+    "options": {
+      "A": "It is inherently updatable for every base column.",
+      "B": "It stores a separate copy of every base row by default.",
+      "C": "It is not inherently updatable because it contains aggregation.",
+      "D": "It cannot be queried without SYSDBA."
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "Aggregation makes a view non-inherently-updatable. A normal view stores a query definition, not a copied result set.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-39",
+    "set": "B",
+    "number": 39,
+    "topic": "Time zones",
+    "type": "single",
+    "stem": "Which datatype stores a timestamp normalized to the database time zone and displays it in the session time zone?",
+    "options": {
+      "A": "TIMESTAMP WITH TIME ZONE",
+      "B": "DATE",
+      "C": "TIMESTAMP",
+      "D": "TIMESTAMP WITH LOCAL TIME ZONE"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "TIMESTAMP WITH LOCAL TIME ZONE normalizes storage to the database time zone and presents values in the session time zone. WITH TIME ZONE retains zone information in the value.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-40",
+    "set": "B",
+    "number": 40,
+    "topic": "Intervals",
+    "type": "single",
+    "stem": "Which datatype is appropriate for storing a duration of 2 years and 3 months?",
+    "options": {
+      "A": "INTERVAL YEAR TO MONTH",
+      "B": "DATE",
+      "C": "INTERVAL DAY TO SECOND",
+      "D": "TIMESTAMP WITH TIME ZONE"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "INTERVAL YEAR TO MONTH represents year-and-month durations. DAY TO SECOND represents day/time durations, while DATE and TIMESTAMP represent points in time.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-41",
+    "set": "B",
+    "number": 41,
+    "topic": "DML and transactions",
+    "type": "multiple",
+    "stem": "Which three statements about the MERGE statement are correct?",
+    "options": {
+      "A": "It can conditionally update target rows that match the join condition.",
+      "B": "It always inserts every source row, including matched rows.",
+      "C": "Its join condition must reference a declared primary key.",
+      "D": "It can conditionally insert source rows that do not match a target row.",
+      "E": "It is deterministic and cannot update the same target row multiple times in one MERGE execution.",
+      "F": "It automatically commits its changes."
+    },
+    "answers": [
+      "A",
+      "D",
+      "E"
+    ],
+    "explanation": "MERGE can update matched rows and insert unmatched rows, and Oracle defines it as deterministic so one target row cannot be updated multiple times in one execution. It does not require a primary-key join and does not commit automatically.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-42",
+    "set": "B",
+    "number": 42,
+    "topic": "Sequences",
+    "type": "single",
+    "stem": "A sequence was created with CACHE 20. After an instance failure, users observe gaps in generated numbers. Is this expected?",
+    "options": {
+      "A": "No; cached sequence values are always recovered and reused.",
+      "B": "Yes; unused cached values can be lost, and sequences do not guarantee gap-free numbering.",
+      "C": "No; a sequence permits gaps only after ALTER SEQUENCE.",
+      "D": "Yes, but only when the table has no primary key."
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "Cached sequence values can be lost on failure, and rollbacks can also create gaps. Sequence generation is independent of a table's primary key.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-43",
+    "set": "B",
+    "number": 43,
+    "topic": "Synonyms",
+    "type": "single",
+    "stem": "Both a private synonym and a public synonym named ORDERS are accessible to a user, and no ORDERS object exists in the user's schema. Which synonym is resolved first?",
+    "options": {
+      "A": "Both are used and their rows are merged",
+      "B": "Resolution always fails as ambiguous",
+      "C": "The private synonym in the user's schema",
+      "D": "The public synonym"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "After Oracle finds no schema object with the name, it resolves a matching private synonym before a public synonym. Synonyms do not merge object data.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-44",
+    "set": "B",
+    "number": 44,
+    "topic": "Indexes",
+    "type": "single",
+    "stem": "A table has a composite B-tree index on (department_id, employee_id). Which predicate can efficiently use the index's leading edge?",
+    "options": {
+      "A": "salary IS NULL only",
+      "B": "employee_id = 100 only",
+      "C": "UPPER(last_name) = 'SMITH'",
+      "D": "department_id = 20"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "The leading column is department_id, so a predicate on it can use the index leading edge. employee_id alone does not use that leading key in the usual range-scan manner.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-45",
+    "set": "B",
+    "number": 45,
+    "topic": "Temporary tables",
+    "type": "single",
+    "stem": "A session inserts rows into a global temporary table defined ON COMMIT PRESERVE ROWS and then commits. Why can that session still query the rows?",
+    "options": {
+      "A": "The clause retains the session's rows across commits until the session ends or deletes them.",
+      "B": "A commit makes temporary rows permanent and visible to all users.",
+      "C": "The clause disables transaction processing for the table.",
+      "D": "Oracle copies the rows into the SYSTEM tablespace at commit."
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "ON COMMIT PRESERVE ROWS retains session-private rows across commits. The rows remain private and are normally removed at session end or by explicit deletion.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-46",
+    "set": "B",
+    "number": 46,
+    "topic": "Constraints",
+    "type": "single",
+    "stem": "A child table has an enabled foreign key referencing a parent key. Which operation fails unless matching child rows are handled or cascading was defined?",
+    "options": {
+      "A": "Updating a non-key parent column",
+      "B": "Deleting a referenced parent row",
+      "C": "Selecting the parent row",
+      "D": "Inserting an unreferenced parent row"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "Deleting a referenced parent violates the foreign key unless child rows are removed/changed or ON DELETE behavior applies. The other operations do not break referential integrity.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-47",
+    "set": "B",
+    "number": 47,
+    "topic": "Instance troubleshooting",
+    "type": "multiple",
+    "stem": "STARTUP fails because the text initialization file contains an invalid parameter name. Which two actions are appropriate?",
+    "options": {
+      "A": "Delete all control files.",
+      "B": "Correct the parameter in the PFILE and retry STARTUP PFILE=...",
+      "C": "Drop the SYSTEM tablespace.",
+      "D": "Reformat the online redo logs.",
+      "E": "Create a valid SPFILE from the corrected PFILE, then start with it."
+    },
+    "answers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Fixing the PFILE permits direct startup or creation of a valid SPFILE. Control files, SYSTEM, and redo logs are unrelated and destructive responses.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-48",
+    "set": "B",
+    "number": 48,
+    "topic": "Alert log troubleshooting",
+    "type": "single",
+    "stem": "Which dynamic performance view lists ADR diagnostic locations and values such as the current session's default trace file?",
+    "options": {
+      "A": "DBA_TABLES",
+      "B": "V$LOG",
+      "C": "V$DIAG_INFO",
+      "D": "USER_SOURCE"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "V$DIAG_INFO reports ADR-related names and paths, including Diag Trace and Default Trace File. The other views describe tables, redo logs, or stored source.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-49",
+    "set": "B",
+    "number": 49,
+    "topic": "User security",
+    "type": "multiple",
+    "stem": "A DBA issues ALTER USER contractor ACCOUNT LOCK while the contractor is connected. Which two statements are true?",
+    "options": {
+      "A": "The user's schema objects are dropped.",
+      "B": "All object privileges granted to the user are revoked.",
+      "C": "The account cannot establish new authenticated sessions while locked.",
+      "D": "The command does not by itself terminate the session that is already connected.",
+      "E": "The account is converted to external authentication."
+    },
+    "answers": [
+      "C",
+      "D"
+    ],
+    "explanation": "ACCOUNT LOCK blocks new authentication but does not drop objects, revoke grants, change the authentication method, or automatically disconnect an existing session.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-50",
+    "set": "B",
+    "number": 50,
+    "topic": "Tablespace administration",
+    "type": "single",
+    "stem": "A permanent tablespace is offline. What is the immediate effect on objects whose segments are stored only there?",
+    "options": {
+      "A": "They move automatically to SYSTEM.",
+      "B": "They remain fully available from the buffer cache indefinitely.",
+      "C": "They are automatically exported by Data Pump.",
+      "D": "They are inaccessible until the tablespace is brought online."
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "Offline tablespace datafiles cannot be accessed, so their objects are unavailable. Oracle does not relocate or export them automatically.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-51",
+    "set": "B",
+    "number": 51,
+    "topic": "Data Pump",
+    "type": "multiple",
+    "stem": "A nonprivileged user runs expdp and writes a dump file through a database DIRECTORY object. Which two access requirements apply?",
+    "options": {
+      "A": "Every exported table requires a SQL*Loader control file.",
+      "B": "The dump path must be the client's current working directory.",
+      "C": "The user needs appropriate READ and WRITE privileges on the DIRECTORY object.",
+      "D": "The user must be added to the database password file.",
+      "E": "The Oracle database processes need operating-system access to the mapped server directory."
+    },
+    "answers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Data Pump uses server-side paths mapped by DIRECTORY objects. The job owner needs directory object privileges, and Oracle server processes need operating-system access to the mapped path.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-52",
+    "set": "B",
+    "number": 52,
+    "topic": "Oracle Net troubleshooting",
+    "type": "multiple",
+    "stem": "A remote service connection fails while local bequeath connections work. Which three checks are appropriate?",
+    "options": {
+      "A": "Disable all database auditing.",
+      "B": "Verify service registration with the listener.",
+      "C": "Verify listener status and listening endpoints.",
+      "D": "Rebuild every table index.",
+      "E": "Increase UNDO_RETENTION.",
+      "F": "Verify the host, port, and service name in the connect descriptor."
+    },
+    "answers": [
+      "B",
+      "C",
+      "F"
+    ],
+    "explanation": "Listener availability, descriptor addressing, and service registration directly affect remote Oracle Net connections. Indexes, undo retention, and auditing do not resolve service reachability.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-53",
+    "set": "B",
+    "number": 53,
+    "topic": "Joins",
+    "type": "multiple",
+    "stem": "A report must return only departments that have no employees. Which two query patterns can implement this anti-join?",
+    "options": {
+      "A": "An inner join from departments to employees",
+      "B": "A cross join of departments and employees",
+      "C": "A full outer join with no filtering",
+      "D": "A correlated NOT EXISTS subquery against employees",
+      "E": "A left outer join to employees followed by WHERE employees.employee_id IS NULL"
+    },
+    "answers": [
+      "D",
+      "E"
+    ],
+    "explanation": "NOT EXISTS returns departments for which no employee row exists. A left outer join followed by a null test on a non-null employee key selects the unmatched departments.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-54",
+    "set": "B",
+    "number": 54,
+    "topic": "Conversions",
+    "type": "single",
+    "stem": "A query compares a NUMBER column to the text literal '10X' and raises ORA-01722. What is the cause?",
+    "options": {
+      "A": "Oracle attempts an implicit character-to-number conversion that fails.",
+      "B": "The table lacks an index.",
+      "C": "The query requires a COMMIT first.",
+      "D": "The NUMBER column is automatically converted to a valid date."
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "Datatype precedence causes an attempted numeric conversion of '10X', which is invalid. Indexes and transaction state do not fix malformed numeric text.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-55",
+    "set": "B",
+    "number": 55,
+    "topic": "Aggregates",
+    "type": "multiple",
+    "stem": "A WHERE clause filters out every row before aggregation, and the query has no GROUP BY. Which two aggregate expressions return 0 rather than NULL?",
+    "options": {
+      "A": "COUNT(*)",
+      "B": "COUNT(commission_pct)",
+      "C": "AVG(salary)",
+      "D": "MAX(salary)",
+      "E": "SUM(salary)"
+    },
+    "answers": [
+      "A",
+      "B"
+    ],
+    "explanation": "COUNT returns zero for an empty input set, whether it counts rows or non-null expression values. SUM, AVG, and MAX return NULL for an empty set.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-56",
+    "set": "B",
+    "number": 56,
+    "topic": "Subqueries",
+    "type": "single",
+    "stem": "A scalar subquery used as an expression returns no rows. What value does Oracle return for that scalar subquery?",
+    "options": {
+      "A": "ORA-01427",
+      "B": "NULL",
+      "C": "0",
+      "D": "An empty character string regardless of datatype"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "A scalar subquery that returns zero rows evaluates to NULL. ORA-01427 occurs when it returns more than one row.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-57",
+    "set": "B",
+    "number": 57,
+    "topic": "Set operators",
+    "type": "multiple",
+    "stem": "Which two statements about the result of a compound query are correct?",
+    "options": {
+      "A": "A single ORDER BY for the compound result appears after the final query block.",
+      "B": "The table names in all component queries must match.",
+      "C": "Result-column names are derived from the select list of the first query block.",
+      "D": "Every component query must return the same number of rows.",
+      "E": "Each component query must have its own ORDER BY."
+    },
+    "answers": [
+      "A",
+      "C"
+    ],
+    "explanation": "The first select list determines result-column names, and the compound result is sorted with an ORDER BY at the end. Component row counts and source tables can differ.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-58",
+    "set": "B",
+    "number": 58,
+    "topic": "DDL and constraints",
+    "type": "multiple",
+    "stem": "Which two statements correctly distinguish ENABLE NOVALIDATE from ENABLE VALIDATE for a constraint?",
+    "options": {
+      "A": "ENABLE NOVALIDATE enforces the constraint for new changes without checking all existing rows.",
+      "B": "ENABLE NOVALIDATE deletes existing rows that violate the constraint.",
+      "C": "ENABLE VALIDATE disables enforcement for new DML.",
+      "D": "ENABLE VALIDATE checks existing rows and enforces subsequent changes.",
+      "E": "Both states require the database to be in NOMOUNT."
+    },
+    "answers": [
+      "A",
+      "D"
+    ],
+    "explanation": "NOVALIDATE begins enforcing new changes but can leave preexisting violations unchecked. VALIDATE verifies existing data and enforces future changes.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-59",
+    "set": "B",
+    "number": 59,
+    "topic": "Views and privileges",
+    "type": "single",
+    "stem": "HR grants SELECT ON HR.EMPLOYEES WITH GRANT OPTION to REPORT_OWNER, who creates REPORT_OWNER.EMP_V. What must occur before ANALYST can query the view?",
+    "options": {
+      "A": "ANALYST receives CREATE DATABASE.",
+      "B": "HR drops the base table's primary key.",
+      "C": "REPORT_OWNER grants SELECT on REPORT_OWNER.EMP_V to ANALYST.",
+      "D": "The listener is restarted."
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "ANALYST needs SELECT on the view. REPORT_OWNER can grant it because the required base-table privilege was granted directly WITH GRANT OPTION; listener state and unrelated system privileges do not provide view access.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-60",
+    "set": "B",
+    "number": 60,
+    "topic": "Transactions",
+    "type": "single",
+    "stem": "Session A updates a row without committing. Session B then issues SELECT ... FOR UPDATE for the same row. What normally happens under READ COMMITTED isolation?",
+    "options": {
+      "A": "Oracle automatically commits Session A.",
+      "B": "Both sessions hold an exclusive row lock simultaneously.",
+      "C": "Session B immediately locks Session A's uncommitted row version.",
+      "D": "Session B waits for Session A's transaction to end, unless a wait-control clause changes the behavior."
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "SELECT FOR UPDATE requests a row lock and normally waits for the conflicting transaction. NOWAIT, WAIT n, or SKIP LOCKED can alter that behavior.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-61",
+    "set": "B",
+    "number": 61,
+    "topic": "Indexes",
+    "type": "multiple",
+    "stem": "Which two predicates generally prevent a conventional prefix range scan on a normal B-tree index of LAST_NAME?",
+    "options": {
+      "A": "last_name LIKE 'SM%'",
+      "B": "last_name LIKE '%SON'",
+      "C": "last_name BETWEEN 'A' AND 'M'",
+      "D": "last_name = 'SMITH'",
+      "E": "UPPER(last_name) = 'SMITH' when no matching function-based index exists"
+    },
+    "answers": [
+      "B",
+      "E"
+    ],
+    "explanation": "A function changes the indexed expression, and a leading wildcard supplies no starting prefix for a conventional range scan. Equality, trailing-wildcard, and range predicates can use the normal index.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-62",
+    "set": "B",
+    "number": 62,
+    "topic": "Temporary tables",
+    "type": "multiple",
+    "stem": "Which two statements about private temporary tables in Oracle Database 19c are correct?",
+    "options": {
+      "A": "They can be created only while the database is mounted but not open.",
+      "B": "Their definitions are permanently shared by all sessions like global temporary tables.",
+      "C": "Their definitions and data are visible only within the session that creates them.",
+      "D": "Their names use the configured private temporary table prefix, ORA$PTT_ by default.",
+      "E": "They require an entry in tnsnames.ora."
+    },
+    "answers": [
+      "C",
+      "D"
+    ],
+    "explanation": "Private temporary tables are session-private in definition and data and use PRIVATE_TEMP_TABLE_PREFIX, whose default is ORA$PTT_. They are not shared dictionary definitions and are unrelated to Oracle Net.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-63",
+    "set": "B",
+    "number": 63,
+    "topic": "Startup troubleshooting",
+    "type": "multiple",
+    "stem": "Match three startup phases with what Oracle opens or creates during that phase. Which statements are correct?",
+    "options": {
+      "A": "NOMOUNT opens all user datafiles.",
+      "B": "MOUNT permits ordinary users to query all application tables.",
+      "C": "NOMOUNT starts the instance and allocates the SGA.",
+      "D": "MOUNT opens the control files.",
+      "E": "OPEN opens datafiles and online redo logs for database access.",
+      "F": "OPEN discards the control files."
+    },
+    "answers": [
+      "C",
+      "D",
+      "E"
+    ],
+    "explanation": "NOMOUNT creates the instance, MOUNT associates it with the database by opening control files, and OPEN accesses datafiles and redo. Earlier phases do not provide normal table access.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-64",
+    "set": "B",
+    "number": 64,
+    "topic": "Storage troubleshooting",
+    "type": "multiple",
+    "stem": "An INSERT raises ORA-01653 because a segment cannot extend in a smallfile tablespace whose only datafile has AUTOEXTEND OFF. Which two actions can supply allocatable space?",
+    "options": {
+      "A": "Add another datafile to the tablespace with sufficient space.",
+      "B": "Stop LGWR permanently.",
+      "C": "Rebuild the password file.",
+      "D": "Increase PGA_AGGREGATE_TARGET.",
+      "E": "Resize the existing datafile larger or enable AUTOEXTEND with suitable limits."
+    },
+    "answers": [
+      "A",
+      "E"
+    ],
+    "explanation": "Growing the existing file or adding another datafile supplies space to the tablespace. Redo, authentication, and PGA settings do not provide segment extents.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-65",
+    "set": "B",
+    "number": 65,
+    "topic": "SQL*Plus",
+    "type": "single",
+    "stem": "A script should reuse the same substitution value many times without prompting on each reference. Which command can define it once?",
+    "options": {
+      "A": "DEFINE",
+      "B": "HOST",
+      "C": "DESCRIBE",
+      "D": "SPOOL"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "DEFINE assigns a SQL*Plus substitution variable. DESCRIBE shows metadata, SPOOL writes output, and HOST runs an operating-system command.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-66",
+    "set": "B",
+    "number": 66,
+    "topic": "Administration and least privilege",
+    "type": "multiple",
+    "stem": "A help-desk operator must unlock application accounts but must not alter SYS or grant privileges. Which two design choices best reduce risk?",
+    "options": {
+      "A": "Grant DBA as a default role.",
+      "B": "Expose a narrowly scoped definer-rights procedure that validates permitted account names.",
+      "C": "Grant EXECUTE on that procedure to a dedicated help-desk role.",
+      "D": "Share the SYS password.",
+      "E": "Grant ALTER USER directly with ADMIN OPTION to every operator."
+    },
+    "answers": [
+      "B",
+      "C"
+    ],
+    "explanation": "A validated definer-rights API plus a dedicated EXECUTE role constrains the operation. Broad ALTER USER, DBA, or shared SYS credentials violate least privilege.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-67",
+    "set": "B",
+    "number": 67,
+    "topic": "Memory troubleshooting",
+    "type": "multiple",
+    "stem": "Which three components are normally part of the SGA?",
+    "options": {
+      "A": "Shared pool",
+      "B": "Redo log buffer",
+      "C": "Each client's application memory",
+      "D": "Every session's operating-system stack",
+      "E": "Each server process's PGA",
+      "F": "Database buffer cache"
+    },
+    "answers": [
+      "A",
+      "B",
+      "F"
+    ],
+    "explanation": "The buffer cache, shared pool, and redo log buffer are SGA components. PGAs, client memory, and process stacks are private rather than shared instance memory.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-68",
+    "set": "B",
+    "number": 68,
+    "topic": "Oracle Net",
+    "type": "single",
+    "stem": "The listener is running, but a client gets ORA-12514 because the requested service is unknown. Which check is most relevant?",
+    "options": {
+      "A": "Increase the user's tablespace quota.",
+      "B": "Confirm that the database service is registered with the listener and that the connect descriptor uses the correct SERVICE_NAME.",
+      "C": "Rebuild the client's table indexes.",
+      "D": "Change the database character set."
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "ORA-12514 means the listener does not know the requested service. Service registration and SERVICE_NAME are directly relevant; storage and character set are not.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-69",
+    "set": "B",
+    "number": 69,
+    "topic": "DML and constraints",
+    "type": "single",
+    "stem": "An INSERT into a child table fails with ORA-02291. What does this normally indicate?",
+    "options": {
+      "A": "The tablespace is read only.",
+      "B": "The SQL statement contains too many columns for a UNION.",
+      "C": "The foreign-key value has no matching parent key.",
+      "D": "The inserted primary-key value is duplicated in the child."
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "ORA-02291 reports a missing parent key for a referential constraint. Duplicate unique keys normally raise ORA-00001.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-70",
+    "set": "B",
+    "number": 70,
+    "topic": "Administration diagnostics",
+    "type": "single",
+    "stem": "A DBA is investigating a blocked session. Which V$SESSION column can identify the session currently blocking it?",
+    "options": {
+      "A": "DATAFILE_ID",
+      "B": "SQL_TRACE",
+      "C": "DB_BLOCK_SIZE",
+      "D": "BLOCKING_SESSION"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "V$SESSION.BLOCKING_SESSION can identify the blocking session when Oracle can determine it. The other names do not provide that session identifier.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-71",
+    "set": "B",
+    "number": 71,
+    "topic": "Shutdown",
+    "type": "single",
+    "stem": "Which shutdown mode prevents new connections, waits for users to disconnect, and then shuts down without terminating their sessions?",
+    "options": {
+      "A": "NORMAL",
+      "B": "IMMEDIATE",
+      "C": "TRANSACTIONAL",
+      "D": "ABORT"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "SHUTDOWN NORMAL waits for all connected users to disconnect. IMMEDIATE terminates sessions after rolling back active work; TRANSACTIONAL waits for transactions, and ABORT is abrupt.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "B-72",
+    "set": "B",
+    "number": 72,
+    "topic": "Database processes",
+    "type": "single",
+    "stem": "Which background process registers instance and service information dynamically with Oracle Net listeners?",
+    "options": {
+      "A": "DBWn",
+      "B": "LREG",
+      "C": "LGWR",
+      "D": "CKPT"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "LREG performs dynamic listener registration for instance and service information. DBWn writes data blocks, LGWR writes redo, and CKPT coordinates checkpoints.",
+    "shuffleOptions": true
+  }
+]

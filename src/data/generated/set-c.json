@@ -1,0 +1,1424 @@
+[
+  {
+    "id": "C-01",
+    "set": "C",
+    "number": 1,
+    "topic": "SQL filtering and pattern matching",
+    "type": "single",
+    "stem": "Which predicate finds LAST_NAME values that contain a literal underscore, using backslash as the escape character?",
+    "options": {
+      "A": "last_name LIKE '%_%'",
+      "B": "last_name LIKE '%\\_%' ESCAPE '\\'",
+      "C": "last_name = '%_%'",
+      "D": "last_name LIKE '%[_]%'"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "In a LIKE pattern, underscore matches any one character. ESCAPE defines backslash as the escape character, so \\_ matches a literal underscore.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-02",
+    "set": "C",
+    "number": 2,
+    "topic": "SQL operator precedence",
+    "type": "single",
+    "stem": "Evaluate the filter: WHERE department_id = 10 OR department_id = 20 AND salary > 5000. Which description is correct?",
+    "options": {
+      "A": "The statement fails because parentheses are mandatory",
+      "B": "Only department 20 rows qualify",
+      "C": "Rows must have department 10 or 20, and all must have salary above 5000",
+      "D": "All department 10 rows qualify; department 20 rows qualify only when salary is above 5000"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "AND has higher precedence than OR, so the condition is department 10 OR (department 20 AND salary > 5000).",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-03",
+    "set": "C",
+    "number": 3,
+    "topic": "SQL sorting",
+    "type": "single",
+    "stem": "A query contains ORDER BY 2 DESC, 1. What does 2 mean?",
+    "options": {
+      "A": "The literal number 2",
+      "B": "The second table column",
+      "C": "The second row returned",
+      "D": "The second expression in the SELECT list"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "A numeric ORDER BY item is the ordinal position of a select-list expression, not necessarily the physical table column.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-04",
+    "set": "C",
+    "number": 4,
+    "topic": "SQL*Plus variables",
+    "type": "single",
+    "stem": "A SQL*Plus script must prompt for DEPT_ID with the text 'Department: ' and store the response in substitution variable DEPT_ID. Which command does this?",
+    "options": {
+      "A": "VARIABLE dept_id PROMPT 'Department: '",
+      "B": "ACCEPT dept_id PROMPT 'Department: '",
+      "C": "BIND dept_id ACCEPT 'Department: '",
+      "D": "COLUMN dept_id PROMPT 'Department: '"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "ACCEPT reads user input into a SQL*Plus substitution variable and can display a PROMPT string.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-05",
+    "set": "C",
+    "number": 5,
+    "topic": "Character functions",
+    "type": "single",
+    "stem": "What does INSTR('CORPORATE FLOOR','OR', 3, 2) return?",
+    "options": {
+      "A": "0",
+      "B": "8",
+      "C": "5",
+      "D": "14"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "Starting at character 3, the second occurrence of OR begins at character 14. INSTR returns the starting position of the requested occurrence.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-06",
+    "set": "C",
+    "number": 6,
+    "topic": "Number functions",
+    "type": "single",
+    "stem": "What does TRUNC(987.65, -2) return?",
+    "options": {
+      "A": "988",
+      "B": "1000",
+      "C": "900",
+      "D": "987.00"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "A negative precision truncates digits left of the decimal; truncating to hundreds yields 900, without rounding.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-07",
+    "set": "C",
+    "number": 7,
+    "topic": "Date arithmetic",
+    "type": "single",
+    "stem": "If hire_date is a DATE, what is the data type of hire_date + 7?",
+    "options": {
+      "A": "TIMESTAMP WITH TIME ZONE",
+      "B": "INTERVAL DAY TO SECOND",
+      "C": "NUMBER",
+      "D": "DATE"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "Adding a number to a DATE adds that many days and returns a DATE.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-08",
+    "set": "C",
+    "number": 8,
+    "topic": "Date functions",
+    "type": "single",
+    "stem": "What does ADD_MONTHS(DATE '2024-02-29', 12) return?",
+    "options": {
+      "A": "An error because 2025 is not a leap year",
+      "B": "28-FEB-2025",
+      "C": "29-FEB-2025",
+      "D": "01-MAR-2025"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "If the input is the last day of its month, ADD_MONTHS returns the last day of the target month. February 28 is the last day of February 2025.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-09",
+    "set": "C",
+    "number": 9,
+    "topic": "Date literals and conversion",
+    "type": "single",
+    "stem": "Which expression represents 15 January 2024 without any character-to-date conversion or dependency on NLS_DATE_FORMAT?",
+    "options": {
+      "A": "TO_CHAR('2024-01-15')",
+      "B": "'15-JAN-2024'",
+      "C": "DATE '2024-01-15'",
+      "D": "DATE('2024-01-15')"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "An ANSI DATE literal uses DATE 'YYYY-MM-DD' and is not converted according to NLS_DATE_FORMAT.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-10",
+    "set": "C",
+    "number": 10,
+    "topic": "Conditional functions",
+    "type": "single",
+    "stem": "In Oracle SQL, what does DECODE(NULL, NULL, 'MATCH', 'NO MATCH') return?",
+    "options": {
+      "A": "An error",
+      "B": "MATCH",
+      "C": "NULL",
+      "D": "NO MATCH"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "For DECODE comparisons, Oracle considers two nulls equivalent, so the matching result is returned.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-11",
+    "set": "C",
+    "number": 11,
+    "topic": "Conditional functions",
+    "type": "single",
+    "stem": "What does NULLIF(10,10) return?",
+    "options": {
+      "A": "0",
+      "B": "An error",
+      "C": "NULL",
+      "D": "10"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "NULLIF returns NULL when its two expressions compare equal; otherwise it returns the first expression.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-12",
+    "set": "C",
+    "number": 12,
+    "topic": "Aggregate functions",
+    "type": "single",
+    "stem": "SALARY contains values 1000, 1000, 2000, and NULL. What does COUNT(DISTINCT salary) return?",
+    "options": {
+      "A": "4",
+      "B": "2",
+      "C": "3",
+      "D": "NULL"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "COUNT(DISTINCT expression) counts distinct non-null values. The values are 1000 and 2000.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-13",
+    "set": "C",
+    "number": 13,
+    "topic": "GROUP BY",
+    "type": "single",
+    "stem": "Which select-list expression is valid in SELECT department_id, ___ FROM employees GROUP BY department_id?",
+    "options": {
+      "A": "salary",
+      "B": "last_name",
+      "C": "MAX(salary)",
+      "D": "hire_date"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "A select-list item in an aggregate query must be grouped or aggregated. MAX(salary) is aggregated; the other ungrouped columns are invalid.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-14",
+    "set": "C",
+    "number": 14,
+    "topic": "HAVING and grouping",
+    "type": "single",
+    "stem": "Which clause correctly restricts the result to departments whose average salary exceeds 8000?",
+    "options": {
+      "A": "WHERE AVG(salary) > 8000",
+      "B": "ORDER BY AVG(salary) > 8000",
+      "C": "HAVING AVG(salary) > 8000",
+      "D": "GROUP BY AVG(salary) > 8000"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "A condition on a group aggregate belongs in HAVING. WHERE is evaluated before group aggregates are formed.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-15",
+    "set": "C",
+    "number": 15,
+    "topic": "Joins",
+    "type": "single",
+    "stem": "A join uses USING (department_id). How must the joined DEPARTMENT_ID column be referenced in the SELECT list?",
+    "options": {
+      "A": "Only through ROWID",
+      "B": "With either table alias only",
+      "C": "Without a table alias",
+      "D": "With both table aliases"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "A column named in a USING clause is referenced unqualified in that query block; qualifying it with a table alias is invalid.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-16",
+    "set": "C",
+    "number": 16,
+    "topic": "Self-joins",
+    "type": "single",
+    "stem": "EMPLOYEES.MANAGER_ID references EMPLOYEES.EMPLOYEE_ID. Which technique pairs each employee with the employee's manager?",
+    "options": {
+      "A": "Join EMPLOYEES to itself using two aliases",
+      "B": "Use a NATURAL JOIN with one alias",
+      "C": "Use a CROSS JOIN without a condition",
+      "D": "Use UNION between two copies of EMPLOYEES"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "A self-join gives the same table separate aliases for the employee and manager roles and joins manager_id to employee_id.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-17",
+    "set": "C",
+    "number": 17,
+    "topic": "Natural joins",
+    "type": "single",
+    "stem": "What determines the join columns for a NATURAL JOIN?",
+    "options": {
+      "A": "All columns with the same names in both tables",
+      "B": "Columns with matching data types regardless of name",
+      "C": "Columns named in an ON clause",
+      "D": "Only primary-key columns"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "NATURAL JOIN automatically equijoins all identically named columns. ON is not used with it.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-18",
+    "set": "C",
+    "number": 18,
+    "topic": "Subqueries",
+    "type": "single",
+    "stem": "What does an EXISTS condition test?",
+    "options": {
+      "A": "Whether every selected value is non-null",
+      "B": "Whether its subquery returns at least one row",
+      "C": "Whether its subquery returns exactly one column",
+      "D": "Whether the subquery returns the same row count as the outer query"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "EXISTS is true when the correlated or uncorrelated subquery produces at least one row; its select-list values are immaterial.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-19",
+    "set": "C",
+    "number": 19,
+    "topic": "Subqueries and NULL",
+    "type": "single",
+    "stem": "Why can NOT IN (subquery) unexpectedly return no rows when the subquery includes NULL?",
+    "options": {
+      "A": "NOT IN permits only one subquery row",
+      "B": "NOT IN ignores all non-NULL values",
+      "C": "NULL is converted to zero",
+      "D": "Comparisons involving the NULL make the predicate UNKNOWN"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "NOT IN is equivalent to multiple inequality comparisons; a NULL comparison is UNKNOWN, preventing the overall condition from being TRUE.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-20",
+    "set": "C",
+    "number": 20,
+    "topic": "Correlated subqueries",
+    "type": "single",
+    "stem": "Which statement describes a correlated subquery?",
+    "options": {
+      "A": "It must return exactly one row",
+      "B": "It is allowed only in the SELECT list",
+      "C": "It can execute independently of the outer query",
+      "D": "It references a column from an outer query block"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "A correlated subquery refers to the outer query and is logically evaluated for candidate outer rows. It need not be single-row or select-list-only.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-21",
+    "set": "C",
+    "number": 21,
+    "topic": "Set operators",
+    "type": "single",
+    "stem": "A query lists all product IDs, and a second query lists discontinued product IDs. Which operator between them returns only product IDs that are not discontinued, with duplicates removed?",
+    "options": {
+      "A": "MINUS",
+      "B": "UNION ALL",
+      "C": "INTERSECT",
+      "D": "CROSS JOIN"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "MINUS returns distinct rows from the first query that do not occur in the second query.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-22",
+    "set": "C",
+    "number": 22,
+    "topic": "Set operators",
+    "type": "single",
+    "stem": "Where may ORDER BY appear in a compound query using UNION?",
+    "options": {
+      "A": "Nowhere unless a view is created",
+      "B": "In every component query",
+      "C": "Only at the end of the compound query",
+      "D": "Only before UNION"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "A compound query has one ORDER BY at the end to sort the combined result.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-23",
+    "set": "C",
+    "number": 23,
+    "topic": "DML error handling",
+    "type": "single",
+    "stem": "An UPDATE statement changes several rows but fails on one row because of a constraint violation. No exception handler or explicit rollback is involved. What is the normal transaction effect?",
+    "options": {
+      "A": "The entire transaction is committed",
+      "B": "The changes made by that UPDATE statement are rolled back, while earlier uncommitted statements remain pending",
+      "C": "The entire session is disconnected",
+      "D": "Only the failed row is undone and all other rows from the statement remain changed"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "Oracle provides statement-level atomicity: failure rolls back the effects of that statement, not normally the entire transaction.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-24",
+    "set": "C",
+    "number": 24,
+    "topic": "Transactions and locking",
+    "type": "single",
+    "stem": "A session selects rows with SELECT ... FOR UPDATE and then issues COMMIT. What happens to the row locks acquired by that statement?",
+    "options": {
+      "A": "They are released",
+      "B": "They become table locks",
+      "C": "They remain until the session exits",
+      "D": "They are transferred to the next session"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "COMMIT ends the transaction and releases its row and table locks.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-25",
+    "set": "C",
+    "number": 25,
+    "topic": "MERGE",
+    "type": "single",
+    "stem": "What is the primary purpose of MERGE?",
+    "options": {
+      "A": "Conditionally update matched rows and insert unmatched rows",
+      "B": "Combine rows from two query results like UNION",
+      "C": "Move a table to another tablespace",
+      "D": "Commit several transactions together"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "MERGE performs conditional DML based on match status, commonly updating matched target rows and inserting unmatched source rows.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-26",
+    "set": "C",
+    "number": 26,
+    "topic": "Constraints",
+    "type": "single",
+    "stem": "Which constraint can contain multiple NULL values because NULLs are not considered equal for uniqueness enforcement?",
+    "options": {
+      "A": "FOREIGN KEY only when indexed",
+      "B": "PRIMARY KEY",
+      "C": "UNIQUE",
+      "D": "NOT NULL"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "A UNIQUE constraint permits multiple NULLs. A primary key combines uniqueness with NOT NULL.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-27",
+    "set": "C",
+    "number": 27,
+    "topic": "Foreign keys",
+    "type": "single",
+    "stem": "What must a foreign-key value normally reference when it is non-NULL?",
+    "options": {
+      "A": "A NOT NULL column only",
+      "B": "Any indexed parent column",
+      "C": "A primary-key or unique-key value in the parent",
+      "D": "A sequence value"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "A foreign key references a parent primary key or unique key. An arbitrary index or NOT NULL constraint is insufficient.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-28",
+    "set": "C",
+    "number": 28,
+    "topic": "Views",
+    "type": "single",
+    "stem": "What is the purpose of WITH CHECK OPTION in a view definition?",
+    "options": {
+      "A": "Prevent DML through the view from producing rows that the view cannot select",
+      "B": "Permit queries without privileges on the view",
+      "C": "Force all base-table columns to be displayed",
+      "D": "Make the view materialized"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "WITH CHECK OPTION requires inserts and updates performed through the view to leave rows satisfying the view's defining condition.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-29",
+    "set": "C",
+    "number": 29,
+    "topic": "Sequences",
+    "type": "single",
+    "stem": "A transaction obtains ORDER_SEQ.NEXTVAL and is then rolled back. What happens to that sequence value?",
+    "options": {
+      "A": "It is normally not reused, so a gap can remain",
+      "B": "CURRVAL becomes valid in every session",
+      "C": "It is automatically returned to the sequence",
+      "D": "The sequence is dropped"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "Sequence generation is independent of transaction rollback. Values can be skipped and sequences do not guarantee gap-free numbering.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-30",
+    "set": "C",
+    "number": 30,
+    "topic": "Indexes",
+    "type": "single",
+    "stem": "Which statement about a B-tree index is correct?",
+    "options": {
+      "A": "It prevents full table scans",
+      "B": "It may improve selective predicates but adds DML maintenance cost",
+      "C": "It guarantees rows are returned in index order without ORDER BY",
+      "D": "It stores only NULL entries for a single-column index"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "Indexes can accelerate selective access but must be maintained during DML. They do not guarantee result order or prevent optimizer-chosen scans.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-31",
+    "set": "C",
+    "number": 31,
+    "topic": "Temporary tables",
+    "type": "single",
+    "stem": "Session A inserts rows into a global temporary table but does not commit. What can Session B see when it queries the same temporary table definition?",
+    "options": {
+      "A": "All rows after taking a table lock",
+      "B": "Only Session B's own temporary rows",
+      "C": "No table definition",
+      "D": "Session A's uncommitted rows"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "The definition of a global temporary table is shared, but each session sees only its own temporary data, regardless of another session's commit state.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-32",
+    "set": "C",
+    "number": 32,
+    "topic": "Time-zone functions",
+    "type": "single",
+    "stem": "Which function returns the current date and time in the session time zone as a TIMESTAMP WITH TIME ZONE value?",
+    "options": {
+      "A": "SYSTIMESTAMP at the database time zone only",
+      "B": "CURRENT_DATE",
+      "C": "SYSDATE",
+      "D": "CURRENT_TIMESTAMP"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "CURRENT_TIMESTAMP returns TIMESTAMP WITH TIME ZONE in the session time zone. CURRENT_DATE returns DATE, and SYSDATE returns the database host's DATE.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-33",
+    "set": "C",
+    "number": 33,
+    "topic": "Intervals",
+    "type": "single",
+    "stem": "Which expression creates an INTERVAL YEAR TO MONTH value representing 18 months?",
+    "options": {
+      "A": "TO_DATE(18, 'MONTH')",
+      "B": "NUMTOYMINTERVAL(18, 'MONTH')",
+      "C": "NUMTODSINTERVAL(18, 'MONTH')",
+      "D": "INTERVAL '18' DAY"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "NUMTOYMINTERVAL converts a number of YEAR or MONTH units to an INTERVAL YEAR TO MONTH value.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-34",
+    "set": "C",
+    "number": 34,
+    "topic": "Oracle memory architecture",
+    "type": "single",
+    "stem": "In a dedicated server configuration, where are a server process's sort and hash work areas normally allocated?",
+    "options": {
+      "A": "PGA",
+      "B": "Online redo log",
+      "C": "Database buffer cache only",
+      "D": "Control file"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "The PGA is private process memory and contains SQL work areas such as those used for sorts and hash operations.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-35",
+    "set": "C",
+    "number": 35,
+    "topic": "Control files",
+    "type": "single",
+    "stem": "Which information is recorded in an Oracle control file?",
+    "options": {
+      "A": "User passwords in clear text",
+      "B": "The contents of all archived redo logs",
+      "C": "Names and status information for datafiles and online redo logs",
+      "D": "Every application's table rows"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "The control file contains database structural metadata, including datafile and online redo log information and checkpoint data.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-36",
+    "set": "C",
+    "number": 36,
+    "topic": "Instance recovery",
+    "type": "single",
+    "stem": "After SHUTDOWN ABORT, which recovery normally occurs automatically when the database is opened again?",
+    "options": {
+      "A": "A full database recreation",
+      "B": "Media recovery requiring every archived log ever created",
+      "C": "Data Pump import",
+      "D": "Instance recovery using online redo and undo"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "An abrupt shutdown can leave files inconsistent. Oracle normally performs instance recovery by rolling forward redo and rolling back uncommitted work.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-37",
+    "set": "C",
+    "number": 37,
+    "topic": "Instance shutdown",
+    "type": "single",
+    "stem": "Which shutdown mode prevents new transactions, waits for active transactions to finish, and then disconnects the sessions?",
+    "options": {
+      "A": "NORMAL",
+      "B": "TRANSACTIONAL",
+      "C": "IMMEDIATE",
+      "D": "ABORT"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "SHUTDOWN TRANSACTIONAL waits for active transactions to complete, prevents new transactions, and then disconnects sessions.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-38",
+    "set": "C",
+    "number": 38,
+    "topic": "Background processes",
+    "type": "single",
+    "stem": "What is a principal responsibility of CKPT during a checkpoint?",
+    "options": {
+      "A": "Archive filled online redo logs",
+      "B": "Write redo entries to online redo logs",
+      "C": "Execute user SQL",
+      "D": "Update datafile headers and the control file with checkpoint information"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "CKPT records checkpoint progress in file headers and the control file. DBWn writes dirty blocks; LGWR writes redo.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-39",
+    "set": "C",
+    "number": 39,
+    "topic": "Archiving",
+    "type": "single",
+    "stem": "When the database is in ARCHIVELOG mode, which background process copies filled online redo logs to archive destinations?",
+    "options": {
+      "A": "MMON",
+      "B": "PMON",
+      "C": "ARCn",
+      "D": "DBWn"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "ARCn processes archive filled redo log groups when automatic archiving is enabled.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-40",
+    "set": "C",
+    "number": 40,
+    "topic": "Tablespaces",
+    "type": "single",
+    "stem": "Which statement about a bigfile tablespace is correct?",
+    "options": {
+      "A": "It must contain at least two datafiles",
+      "B": "It contains one very large datafile or tempfile",
+      "C": "It can store only LOB segments",
+      "D": "It cannot use locally managed extents"
+    },
+    "answers": [
+      "B"
+    ],
+    "explanation": "A bigfile tablespace uses a single large datafile (or tempfile for a temporary tablespace), simplifying file management.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-41",
+    "set": "C",
+    "number": 41,
+    "topic": "Data dictionary",
+    "type": "single",
+    "stem": "Which data dictionary view lists all database users when queried by an appropriately privileged administrator?",
+    "options": {
+      "A": "DBA_USERS",
+      "B": "USER_USERS only",
+      "C": "V$PROCESS",
+      "D": "ALL_TABLES"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "DBA_USERS contains one row for each database user. Access normally requires dictionary privileges.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-42",
+    "set": "C",
+    "number": 42,
+    "topic": "Diagnostics",
+    "type": "single",
+    "stem": "Which command-line utility is designed to inspect and package diagnostic data stored in the ADR?",
+    "options": {
+      "A": "ADRCI",
+      "B": "SQL*Loader",
+      "C": "DBCA",
+      "D": "orapwd"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "ADRCI is the Automatic Diagnostic Repository Command Interpreter for viewing and packaging ADR diagnostic information.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-43",
+    "set": "C",
+    "number": 43,
+    "topic": "Initialization files",
+    "type": "single",
+    "stem": "Which command persists a parameter change in the server parameter file and changes the running instance when issued with SCOPE=BOTH?",
+    "options": {
+      "A": "ALTER SYSTEM SET parameter=value SCOPE=BOTH",
+      "B": "UPDATE V$PARAMETER",
+      "C": "ALTER SESSION SET parameter=value",
+      "D": "ALTER DATABASE SET parameter=value"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "ALTER SYSTEM ... SCOPE=BOTH changes memory and the SPFILE. Dynamic parameters are required for an immediate memory change.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-44",
+    "set": "C",
+    "number": 44,
+    "topic": "Users and authentication",
+    "type": "single",
+    "stem": "Which ALTER USER clause prevents a database account from logging in while leaving the user and owned objects intact?",
+    "options": {
+      "A": "ACCOUNT LOCK",
+      "B": "DEFAULT ROLE NONE",
+      "C": "PASSWORD EXPIRE",
+      "D": "QUOTA 0 ON TEMP"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "ACCOUNT LOCK disables login for the account without dropping the user or its objects.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-45",
+    "set": "C",
+    "number": 45,
+    "topic": "Privileges",
+    "type": "single",
+    "stem": "Which clause lets the recipient of an object privilege grant that same privilege on the object to other users?",
+    "options": {
+      "A": "AUTHID CURRENT_USER",
+      "B": "CASCADE CONSTRAINTS",
+      "C": "WITH GRANT OPTION",
+      "D": "WITH ADMIN OPTION"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "WITH GRANT OPTION applies to object privileges. WITH ADMIN OPTION is used when granting system privileges or roles.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-46",
+    "set": "C",
+    "number": 46,
+    "topic": "Tablespaces and users",
+    "type": "single",
+    "stem": "What is the purpose of a user's default tablespace?",
+    "options": {
+      "A": "It automatically grants unlimited quota",
+      "B": "It contains the user's password verifier",
+      "C": "It supplies the default location for permanent segments when a creation statement names no tablespace",
+      "D": "It stores the user's temporary sort segments"
+    },
+    "answers": [
+      "C"
+    ],
+    "explanation": "The default tablespace is used for permanent objects when no tablespace is specified; quota is a separate requirement.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-47",
+    "set": "C",
+    "number": 47,
+    "topic": "Undo",
+    "type": "single",
+    "stem": "What does UNDO_RETENTION specify when automatic undo management is used?",
+    "options": {
+      "A": "The maximum number of archived logs",
+      "B": "The lifetime of online redo groups",
+      "C": "The time before uncommitted transactions are committed",
+      "D": "The desired minimum time, in seconds, to retain committed undo"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "UNDO_RETENTION is a target retention period for committed undo; guarantee depends on tablespace configuration and available space.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-48",
+    "set": "C",
+    "number": 48,
+    "topic": "Oracle Net",
+    "type": "single",
+    "stem": "Which connect identifier uses Easy Connect naming without requiring a tnsnames.ora alias?",
+    "options": {
+      "A": "//dbhost.example.com:1521/orclpdb",
+      "B": "LISTENER_ORCL",
+      "C": "(ADDRESS_ONLY)",
+      "D": "SID_LIST_LISTENER"
+    },
+    "answers": [
+      "A"
+    ],
+    "explanation": "Easy Connect can specify host, optional port, and service directly, such as //host:port/service.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-49",
+    "set": "C",
+    "number": 49,
+    "topic": "Data Pump",
+    "type": "single",
+    "stem": "What does an Oracle DIRECTORY object used by Data Pump contain?",
+    "options": {
+      "A": "The dump file bytes inside the data dictionary",
+      "B": "An online redo log destination",
+      "C": "A client workstation's current directory",
+      "D": "A database alias for a server-side operating-system directory path"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "A DIRECTORY object names a server-side path. Data Pump users also need suitable database and operating-system access.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-50",
+    "set": "C",
+    "number": 50,
+    "topic": "SQL*Loader",
+    "type": "single",
+    "stem": "During a SQL*Loader job, which file normally receives input records rejected because they cannot be loaded due to formatting or database errors?",
+    "options": {
+      "A": "Discard file only",
+      "B": "Password file",
+      "C": "Server parameter file",
+      "D": "Bad file"
+    },
+    "answers": [
+      "D"
+    ],
+    "explanation": "The bad file receives rejected records. A discard file is for records that do not meet selection criteria.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-51",
+    "set": "C",
+    "number": 51,
+    "topic": "Conditional expressions",
+    "type": "multiple",
+    "stem": "Which two statements about CASE expressions are correct?",
+    "options": {
+      "A": "A simple CASE requires GROUP BY",
+      "B": "CASE always returns every THEN expression",
+      "C": "A searched CASE can evaluate different Boolean conditions",
+      "D": "CASE can be used in a SELECT list",
+      "E": "CASE treats every NULL as zero"
+    },
+    "answers": [
+      "C",
+      "D"
+    ],
+    "explanation": "Both simple and searched CASE expressions can appear in a SELECT list; searched CASE evaluates WHEN conditions and returns one result.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-52",
+    "set": "C",
+    "number": 52,
+    "topic": "Conversion functions",
+    "type": "multiple",
+    "stem": "Which two expressions perform explicit datatype conversion?",
+    "options": {
+      "A": "CAST(order_date AS TIMESTAMP)",
+      "B": "TO_NUMBER('1500')",
+      "C": "commission_pct IS NULL",
+      "D": "salary + '100'",
+      "E": "hire_date = '01-JAN-24'"
+    },
+    "answers": [
+      "A",
+      "B"
+    ],
+    "explanation": "TO_NUMBER and CAST explicitly request conversion. The character literals in the arithmetic and date comparison can trigger implicit conversion.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-53",
+    "set": "C",
+    "number": 53,
+    "topic": "Subqueries and NULL",
+    "type": "multiple",
+    "stem": "Which two approaches can safely avoid the NULL-related surprise of NOT IN when finding parent rows with no child rows?",
+    "options": {
+      "A": "Use NOT EXISTS with a correlated equality condition",
+      "B": "Use ORDER BY in the subquery",
+      "C": "Add NULL to the subquery result",
+      "D": "Exclude NULL values in the NOT IN subquery",
+      "E": "Replace NOT IN with ="
+    },
+    "answers": [
+      "A",
+      "D"
+    ],
+    "explanation": "NOT EXISTS is not made UNKNOWN by a null selected value, and filtering nulls from the NOT IN result removes the problematic comparison.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-54",
+    "set": "C",
+    "number": 54,
+    "topic": "MERGE",
+    "type": "multiple",
+    "stem": "Which two clauses can appear in an Oracle MERGE statement?",
+    "options": {
+      "A": "WHEN MATCHED THEN UPDATE",
+      "B": "WHEN OPENED THEN SELECT",
+      "C": "WHEN NOT MATCHED THEN INSERT",
+      "D": "WHEN GROUPED THEN DELETE TABLE",
+      "E": "WHEN SORTED THEN COMMIT"
+    },
+    "answers": [
+      "A",
+      "C"
+    ],
+    "explanation": "MERGE can update matched target rows and insert unmatched source rows using the MATCHED and NOT MATCHED clauses.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-55",
+    "set": "C",
+    "number": 55,
+    "topic": "Constraints",
+    "type": "multiple",
+    "stem": "Which two statements about deferrable constraints are correct?",
+    "options": {
+      "A": "Deferring a constraint permanently disables it",
+      "B": "Their checking can be deferred until COMMIT when configured and requested",
+      "C": "Only views can have them",
+      "D": "Every NOT NULL constraint is deferrable",
+      "E": "They can be declared INITIALLY DEFERRED"
+    },
+    "answers": [
+      "B",
+      "E"
+    ],
+    "explanation": "A DEFERRABLE constraint may be checked at statement end or deferred to transaction commit, and INITIALLY DEFERRED chooses the initial mode.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-56",
+    "set": "C",
+    "number": 56,
+    "topic": "Background processes",
+    "type": "multiple",
+    "stem": "Which two background-process responsibilities are correctly matched?",
+    "options": {
+      "A": "PMON — cleans up after failed user processes",
+      "B": "ARCn — writes dirty buffers to datafiles",
+      "C": "SMON — performs instance recovery when necessary",
+      "D": "DBWn — registers services with listeners",
+      "E": "LGWR — creates user accounts"
+    },
+    "answers": [
+      "A",
+      "C"
+    ],
+    "explanation": "PMON performs process cleanup, and SMON coordinates instance recovery. The other mappings assign unrelated duties.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-57",
+    "set": "C",
+    "number": 57,
+    "topic": "Initialization files",
+    "type": "multiple",
+    "stem": "Which two statements distinguish a PFILE from an SPFILE?",
+    "options": {
+      "A": "An SPFILE should be edited directly with a text editor",
+      "B": "An SPFILE can be updated by ALTER SYSTEM with an appropriate SCOPE",
+      "C": "A PFILE is a text initialization parameter file",
+      "D": "A PFILE is stored in the control file",
+      "E": "SCOPE=SPFILE updates a PFILE automatically"
+    },
+    "answers": [
+      "B",
+      "C"
+    ],
+    "explanation": "A PFILE is text. An SPFILE is server-managed binary storage that ALTER SYSTEM can update; it should not be edited as text.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-58",
+    "set": "C",
+    "number": 58,
+    "topic": "Data dictionary security",
+    "type": "multiple",
+    "stem": "Which two statements about dictionary views are correct?",
+    "options": {
+      "A": "Every user can query every DBA_ view by default",
+      "B": "USER_ views normally describe objects owned by the current user",
+      "C": "ALL_ views show only objects owned by SYS",
+      "D": "V$ views are ordinary application tables",
+      "E": "DBA_ views generally require administrative dictionary access"
+    },
+    "answers": [
+      "B",
+      "E"
+    ],
+    "explanation": "DBA_ views are database-wide and privileged, while USER_ views describe the current user's own objects.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-59",
+    "set": "C",
+    "number": 59,
+    "topic": "Roles and privileges",
+    "type": "multiple",
+    "stem": "Which two statements about roles are correct?",
+    "options": {
+      "A": "Granting a role transfers the grantor's schema",
+      "B": "A role can be granted to another role",
+      "C": "A role owns every object created by its grantees",
+      "D": "Roles automatically provide tablespace quota",
+      "E": "A user's default roles can be controlled with ALTER USER"
+    },
+    "answers": [
+      "B",
+      "E"
+    ],
+    "explanation": "Roles can form role hierarchies, and ALTER USER can control which granted roles are enabled by default. Roles do not own objects or supply quotas.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-60",
+    "set": "C",
+    "number": 60,
+    "topic": "Profiles",
+    "type": "multiple",
+    "stem": "Which two kernel resource limits can be specified in a database profile?",
+    "options": {
+      "A": "DEFAULT TABLESPACE",
+      "B": "QUOTA ON USERS",
+      "C": "SESSIONS_PER_USER",
+      "D": "IDLE_TIME",
+      "E": "TEMPORARY TABLESPACE"
+    },
+    "answers": [
+      "C",
+      "D"
+    ],
+    "explanation": "Profiles can limit sessions per user and idle time. Tablespace assignments and quotas are user attributes, not profile limits.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-61",
+    "set": "C",
+    "number": 61,
+    "topic": "Tablespace administration",
+    "type": "multiple",
+    "stem": "Which two statements about read-only tablespaces are correct?",
+    "options": {
+      "A": "They contain no datafiles",
+      "B": "They require the database to remain in NOMOUNT",
+      "C": "Existing data can normally be queried",
+      "D": "Ordinary DML against their segments is not permitted",
+      "E": "Making one read only drops its indexes"
+    },
+    "answers": [
+      "C",
+      "D"
+    ],
+    "explanation": "Read-only tablespaces remain queryable but do not permit ordinary changes to their data; their files and indexes remain present.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-62",
+    "set": "C",
+    "number": 62,
+    "topic": "Segment creation",
+    "type": "multiple",
+    "stem": "Which two statements about deferred segment creation for a heap table are correct?",
+    "options": {
+      "A": "The table definition can exist before its segment is allocated",
+      "B": "It makes CREATE TABLE invalid",
+      "C": "Deferred creation stores rows in the control file",
+      "D": "The table is invisible in the data dictionary until its segment exists",
+      "E": "The segment is normally created when the first row is inserted"
+    },
+    "answers": [
+      "A",
+      "E"
+    ],
+    "explanation": "With deferred segment creation, metadata is created first and physical segment allocation is postponed until the first insert or an explicit allocation.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-63",
+    "set": "C",
+    "number": 63,
+    "topic": "Read consistency",
+    "type": "multiple",
+    "stem": "Which two statements describe Oracle read consistency?",
+    "options": {
+      "A": "Read consistency requires every query to lock all selected rows",
+      "B": "Redo replaces undo for consistent reads",
+      "C": "Undo can reconstruct older versions of changed blocks",
+      "D": "A normal query reads another session's uncommitted changes",
+      "E": "A query normally sees data committed before its statement began under READ COMMITTED"
+    },
+    "answers": [
+      "C",
+      "E"
+    ],
+    "explanation": "Statement-level read consistency uses undo to provide the committed image as of the query's start SCN and avoids dirty reads.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-64",
+    "set": "C",
+    "number": 64,
+    "topic": "Data Pump",
+    "type": "multiple",
+    "stem": "Which two Data Pump parameter uses are correct?",
+    "options": {
+      "A": "INCLUDE selects object types to include",
+      "B": "REMAP_SCHEMA can import objects into a different schema",
+      "C": "BADFILE identifies the SPFILE",
+      "D": "NOLOGGING prevents creation of a dump file",
+      "E": "CONTROL specifies a SQL*Loader control file for impdp"
+    },
+    "answers": [
+      "A",
+      "B"
+    ],
+    "explanation": "INCLUDE filters object types and REMAP_SCHEMA changes schema mapping during import. The other options are not valid for the stated purposes.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-65",
+    "set": "C",
+    "number": 65,
+    "topic": "Oracle Net services",
+    "type": "multiple",
+    "stem": "Which two statements about Oracle Net service registration are correct?",
+    "options": {
+      "A": "LOCAL_LISTENER can identify a nondefault local listener endpoint",
+      "B": "Every service requires a separate database",
+      "C": "A listener must execute all SQL for registered services",
+      "D": "Dynamic registration lets a database instance advertise services to a listener",
+      "E": "Registration grants CREATE SESSION to clients"
+    },
+    "answers": [
+      "A",
+      "D"
+    ],
+    "explanation": "LREG dynamically registers instance services, and LOCAL_LISTENER can direct registration to a nondefault local listener.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-66",
+    "set": "C",
+    "number": 66,
+    "topic": "Database tools",
+    "type": "multiple",
+    "stem": "Which two tool-purpose mappings are correct?",
+    "options": {
+      "A": "SQL*Loader — edit the SPFILE",
+      "B": "DBCA — load delimited text records",
+      "C": "LSNRCTL — create application schemas",
+      "D": "RMAN — perform physical backup and recovery",
+      "E": "ADRCI — inspect ADR diagnostic data"
+    },
+    "answers": [
+      "D",
+      "E"
+    ],
+    "explanation": "ADRCI manages diagnostic information, and RMAN performs physical backup and recovery. The other pairings are incorrect.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-67",
+    "set": "C",
+    "number": 67,
+    "topic": "Sequences",
+    "type": "multiple",
+    "stem": "Which two statements about Oracle sequences are correct?",
+    "options": {
+      "A": "A sequence must be owned by a table",
+      "B": "CYCLE allows generation to restart after a limit is reached",
+      "C": "ORDER guarantees gap-free values",
+      "D": "CACHE can improve performance by preallocating values in memory",
+      "E": "ROLLBACK restores every used NEXTVAL"
+    },
+    "answers": [
+      "B",
+      "D"
+    ],
+    "explanation": "CYCLE permits wraparound within sequence limits, and CACHE preallocates values for efficiency. Neither feature guarantees gap-free numbering.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-68",
+    "set": "C",
+    "number": 68,
+    "topic": "SQL expressions",
+    "type": "multiple",
+    "stem": "Which three expressions are single-row functions that return one result for each input row?",
+    "options": {
+      "A": "TRUNC(hire_date, 'MONTH')",
+      "B": "COUNT(*)",
+      "C": "LOWER(last_name)",
+      "D": "SUM(salary)",
+      "E": "AVG(salary)",
+      "F": "NVL(commission_pct, 0)"
+    },
+    "answers": [
+      "A",
+      "C",
+      "F"
+    ],
+    "explanation": "LOWER, TRUNC on a date, and NVL are single-row functions. SUM, COUNT, and AVG are aggregate functions.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-69",
+    "set": "C",
+    "number": 69,
+    "topic": "Instance recovery",
+    "type": "multiple",
+    "stem": "Which three statements describe instance recovery after an unclean shutdown?",
+    "options": {
+      "A": "Every user table must be recreated",
+      "B": "The database must remain permanently in MOUNT",
+      "C": "Online redo is applied to datafiles as needed",
+      "D": "Uncommitted changes are rolled back using undo",
+      "E": "A Data Pump dump file is mandatory",
+      "F": "SMON can coordinate recovery"
+    },
+    "answers": [
+      "C",
+      "D",
+      "F"
+    ],
+    "explanation": "Instance recovery rolls forward redo and rolls back uncommitted work, with SMON coordinating the process. It does not require logical import or object recreation.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-70",
+    "set": "C",
+    "number": 70,
+    "topic": "Tablespace files",
+    "type": "multiple",
+    "stem": "Which three statements about database storage files are correct?",
+    "options": {
+      "A": "A control file belongs to one user schema",
+      "B": "An undo tablespace uses datafiles",
+      "C": "A permanent tablespace uses datafiles",
+      "D": "An online redo log is a tablespace datafile",
+      "E": "A temporary tablespace can use tempfiles",
+      "F": "A password file stores table segments"
+    },
+    "answers": [
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "Permanent and undo tablespaces use datafiles, while temporary tablespaces can use tempfiles. Control, redo, and password files are not tablespace files.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-71",
+    "set": "C",
+    "number": 71,
+    "topic": "User account security",
+    "type": "multiple",
+    "stem": "Which three actions can directly strengthen security for a password-authenticated database account?",
+    "options": {
+      "A": "Share the account among applications",
+      "B": "Give unlimited quota on every tablespace",
+      "C": "Grant DBA by default",
+      "D": "Assign an appropriate password profile",
+      "E": "Grant only the required privileges",
+      "F": "Lock the account when it is not needed"
+    },
+    "answers": [
+      "D",
+      "E",
+      "F"
+    ],
+    "explanation": "Profiles enforce password controls, account locking prevents login, and least-privilege grants reduce exposure. Broad grants and shared credentials weaken security.",
+    "shuffleOptions": true
+  },
+  {
+    "id": "C-72",
+    "set": "C",
+    "number": 72,
+    "topic": "Database objects",
+    "type": "multiple",
+    "stem": "Which three statements about Oracle schema objects are correct?",
+    "options": {
+      "A": "A materialized view stores query results",
+      "B": "A function-based index stores values derived from an expression",
+      "C": "A bitmap index is required for every primary key",
+      "D": "Dropping a sequence drops tables that used it",
+      "E": "A private synonym does not grant privileges on its target",
+      "F": "A view always owns a copy of its base rows"
+    },
+    "answers": [
+      "A",
+      "B",
+      "E"
+    ],
+    "explanation": "Materialized views store results, synonyms provide names without privileges, and function-based indexes index expression results. The other statements are false.",
+    "shuffleOptions": true
+  }
+]

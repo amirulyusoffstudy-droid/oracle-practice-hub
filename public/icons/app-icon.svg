@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Oracle Practice Hub</title>
+  <rect width="512" height="512" rx="112" fill="#07111f"/>
+  <circle cx="256" cy="256" r="174" fill="#10243d" stroke="#36d6b4" stroke-width="16"/>
+  <ellipse cx="256" cy="174" rx="108" ry="42" fill="#36d6b4"/>
+  <path d="M148 174v142c0 23 48 42 108 42s108-19 108-42V174" fill="none" stroke="#36d6b4" stroke-width="20"/>
+  <path d="M148 245c0 23 48 42 108 42s108-19 108-42" fill="none" stroke="#36d6b4" stroke-width="14"/>
+  <text x="256" y="420" fill="#f3f7fb" font-family="Arial, sans-serif" font-size="54" font-weight="700" text-anchor="middle">1Z0-082</text>
+</svg>
