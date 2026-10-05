@@ -97,18 +97,20 @@ This file is the durable handoff for continuing development module by module.
 
 ## Final status
 
-- Modules M1-M9 are complete and verified.
-- M10 — Runner navigation, GitHub publication, and Vercel deployment: IN PROGRESS.
-- Runner Home navigation is implemented and verified: it returns to the dashboard while preserving the autosaved active attempt for resume.
+- Modules M1-M10 are complete and verified.
+- M10 — Runner navigation, GitHub publication, and Vercel deployment: COMPLETE.
+- Runner Home navigation returns to the dashboard while preserving the autosaved active attempt for resume.
 - Navigation verification: targeted TDD test passed; full suite passed with 9 files and 40 tests; ESLint and production build passed with 32 modules transformed.
-- Local Git repository is initialized on `main`; public GitHub destination is `amirulyusoffstudy-droid/oracle-practice-hub`.
 - Pre-commit scan found no secrets or forbidden tracked files; two scanner hits were reviewed as safe false positives (`RegExp.exec` and documentation stating `dangerouslySetInnerHTML` is not used).
-- Current exact action: create and push the verified public GitHub repository, then authenticate and deploy the production build to Vercel as `oracle-082`.
-- The app remains local-first with no backend, login, analytics, deployment, or external data sink.
-- No deployment, publication, commit, or push has been performed yet.
+- Public GitHub repository: `https://github.com/amirulyusoffstudy-droid/oracle-practice-hub`; remote and local `main` were verified at commit `ff9d464ee815df62c644dd100938b30b4501fa46` immediately after publication.
+- Production Vercel project: `oracle-082`; short public URL: `https://oracle-082.vercel.app`.
+- Vercel deployment was read back as `Ready` in the production environment, and the short alias, manifest, and service worker each returned HTTP 200.
+- Public mobile smoke at `390 × 844` passed: app/root/setup form rendered, viewport width equalled document width, and no clipping, overlap, or horizontal overflow was visible.
+- Public PWA smoke passed both online and after a genuine DevTools offline hard reload: the document reached `complete`, the app remained service-worker controlled, and its heading, form, JavaScript, and stylesheet rendered from cache.
+- The app remains local-first with no backend, app login, analytics, or external data sink.
 
 ## Safety and scope
 
-- Local-first only; no backend, account, analytics, deployment, or external data sink.
+- Local-first only; no backend, app account, analytics, or external data sink.
 - Source files under `ORACLE EXAM` and the Raph cache remain unchanged.
-- No push, deployment, or publication without explicit approval.
+- The public GitHub publication and Vercel production deployment were explicitly approved; future publication or deployment changes require separate approval.
